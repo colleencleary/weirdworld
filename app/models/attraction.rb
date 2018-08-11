@@ -17,7 +17,6 @@ class Attraction
   end
 
   def self.create(opts)
-# # NOTE: REMEMBER TO ADD TAGS BACK INTO THIS
     results = DB.exec(
       <<-SQL
         INSERT INTO attractions (name, description, submitted_by, image, city, country, website, tags, rating)

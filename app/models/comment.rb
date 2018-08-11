@@ -22,6 +22,7 @@ def self.create(opts)
       RETURNING id, comment, username, attraction_id;
     SQL
   )
+  #ERROR: syntax error at or near ")" LINE 2: VALUES ('','', ) ^
 end
 
 def self.delete (id)
