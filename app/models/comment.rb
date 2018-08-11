@@ -6,38 +6,43 @@ class Comment
     DB = PG.connect(host: "localhost", port: 5432, dbname: 'weirdworld_development')
   end
 
-def self.all
-   results = DB.exec("SELECT * FROM comments")
-end
+# Get All
+  def self.all
+     results = DB.exec("SELECT * FROM comments")
+  end
 
-def self.find(id)
-  results = DB.exec("SELECT * FROM comments WHERE id = #{id};")
-end
+# Get One by ID
+  def self.find(id)
+    results = DB.exec("SELECT * FROM comments WHERE id = #{id};")
+  end
 
-def self.create(opts)
-  results = DB.exec(
-    <<-SQL
-      INSERT INTO comments (content, username, attraction_id)
-      VALUES ('#{opts["content"]}','#{opts["username"]}', #{opts["attraction_id"]})
+# Post/ Create New
+  def self.create(opts)
+    results = DB.exec(
+      <<-SQL
+        INSERT INTO comments (content, username, attraction_id)
+        VALUES ('#{opts["content"]}','#{opts["username"]}', #{opts["attraction_id"]})
+        RETURNING id, content, username, attraction_id;
+      SQL
+    )
+  end
+
+# Delete by ID
+  def self.delete (id)
+    results = DB.exec("DELETE FROM comments WHERE id=#{id};")
+    return { deleted: true }
+  end
+
+# Update/Put by ID
+  def self.update (id, opts)
+    results = DB.exec(
+      <<-SQL
+      UPDATE comments
+      SET content = '#{opts["content"]}', username='#{opts["username"]}', attraction_id=#{opts["attraction_id"]}
+      WHERE id = #{id}
       RETURNING id, content, username, attraction_id;
-    SQL
-  )
-end
-
-def self.delete (id)
-  results = DB.exec("DELETE FROM comments WHERE id=#{id};")
-  return { deleted: true }
-end
-
-def self.update (id, opts)
-  results = DB.exec(
-    <<-SQL
-    UPDATE comments
-    SET name ='#{opts["name"]}', description='#{opts["description"]}', submitted_by='#{opts["submitted_by"]}', image='#{opts["image"]}', city= '#{opts["city"]}', country= '#{opts["country"]}', website= '#{opts["website"]}', rating='#{opts["rating"]}'
-    WHERE id = #{id}
-    RETURNING id, name, description, submitted_by, image, city, country, website, rating;
-    SQL
-  )
-end
+      SQL
+    )
+  end
 
 end #end comment class
