@@ -20,9 +20,9 @@ class Attraction
 # # NOTE: REMEMBER TO ADD TAGS BACK INTO THIS
     results = DB.exec(
       <<-SQL
-        INSERT INTO attractions (name, description, submitted_by, image, city, country, website, rating)
-        VALUES ('#{opts["name"]}', '#{opts["description"]}', '#{opts["submitted_by"]}', '#{opts["image"]}', '#{opts["city"]}', '#{opts["country"]}', '#{opts["website"]}','#{opts["rating"]}' )
-        RETURNING id, name, description, submitted_by, image, city, country, website, rating;
+        INSERT INTO attractions (name, description, submitted_by, image, city, country, website, tags, rating)
+        VALUES ('#{opts["name"]}', '#{opts["description"]}', '#{opts["submitted_by"]}', '#{opts["image"]}', '#{opts["city"]}', '#{opts["country"]}', '#{opts["website"]}', #{opts["tags"]}, '#{opts["rating"]}' )
+        RETURNING id, name, description, submitted_by, image, city, country, website, tags, rating;
       SQL
     )
 
@@ -37,9 +37,9 @@ class Attraction
     results = DB.exec(
       <<-SQL
       UPDATE attractions
-      SET name ='#{opts["name"]}', description='#{opts["description"]}', submitted_by='#{opts["submitted_by"]}', image='#{opts["image"]}', city= '#{opts["city"]}', country= '#{opts["country"]}', website= '#{opts["website"]}', rating='#{opts["rating"]}'
+      SET name ='#{opts["name"]}', description='#{opts["description"]}', submitted_by='#{opts["submitted_by"]}', image='#{opts["image"]}', city= '#{opts["city"]}', country= '#{opts["country"]}', website= '#{opts["website"]}', tags=#{opts["tags"]}, rating='#{opts["rating"]}'
       WHERE id = #{id}
-      RETURNING id, name, description, submitted_by, image, city, country, website, rating;
+      RETURNING id, name, description, submitted_by, image, city, country, website, tags, rating;
       SQL
     )
   end
