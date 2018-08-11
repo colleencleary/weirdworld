@@ -5,7 +5,7 @@ class Tag
   else
     DB = PG.connect(host: "localhost", port: 5432, dbname: 'weirdworld_development')
   end
-  
+
 # Get All
   def self.all
      results = DB.exec("SELECT * FROM tags")
@@ -19,9 +19,9 @@ class Tag
   def self.create(opts)
     results = DB.exec(
       <<-SQL
-        INSERT INTO tags (tag)
-        VALUES ('#{opts["tag"]}')
-        RETURNING id, tag;
+        INSERT INTO tags (term)
+        VALUES ('#{opts["term"]}')
+        RETURNING id, term;
       SQL
     )
   end
@@ -37,9 +37,9 @@ class Tag
     results = DB.exec(
       <<-SQL
       UPDATE tags
-      SET tag = '#{opts["tag"]}'
+      SET term = '#{opts["term"]}'
       WHERE id = #{id}
-      RETURNING id, tag;
+      RETURNING id, term;
       SQL
     )
   end
