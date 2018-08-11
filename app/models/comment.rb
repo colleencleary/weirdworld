@@ -17,12 +17,11 @@ end
 def self.create(opts)
   results = DB.exec(
     <<-SQL
-      INSERT INTO comments (comment, username, attraction_id)
-      VALUES ('#{opts["comment"]}','#{opts["username"]}', #{opts["attraction_id"]})
-      RETURNING id, comment, username, attraction_id;
+      INSERT INTO comments (content, username, attraction_id)
+      VALUES ('#{opts["content"]}','#{opts["username"]}', #{opts["attraction_id"]})
+      RETURNING id, content, username, attraction_id;
     SQL
   )
-  #ERROR: syntax error at or near ")" LINE 2: VALUES ('','', ) ^
 end
 
 def self.delete (id)

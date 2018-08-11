@@ -14,9 +14,9 @@ INSERT INTO attractions (name, description, submitted_by, image, city, country, 
 
 
 
-CREATE TABLE comments (id SERIAL, comment TEXT, username VARCHAR(25), attraction_id INT);
+CREATE TABLE comments (id SERIAL, content TEXT, username VARCHAR(25), attraction_id INT);
 
-INSERT INTO comments (comment, username, attraction_id) VALUES ('Coney Island was more fun than I could have thought!', 'acroak', 1);
+INSERT INTO comments (content, username, attraction_id) VALUES ('Coney Island was more fun than I could have thought!', 'acroak', 1);
 
 CREATE TABLE tags(id SERIAL, tag VARCHAR(25));
 
