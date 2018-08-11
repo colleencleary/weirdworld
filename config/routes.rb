@@ -14,14 +14,14 @@ put '/attractions/:id', to: 'attractions#update'
 
 
 get '/comments', to: 'comments#index'
-get '/comments', to: 'comments#show'
+get '/comments/:id', to: 'comments#show'
 post '/comments', to: 'comments#create'
 delete '/comments/:id', to: 'comments#delete'
 put '/comments/:id', to: 'comments#update'
 
 
 get '/tags', to: 'tags#index'
-get '/tags', to: 'tags#show'
+get '/tags/:id', to: 'tags#show'
 post '/tags', to: 'tags#create'
 delete '/tags/:id', to: 'tags#delete'
 put '/tags/:id', to: 'tags#update'

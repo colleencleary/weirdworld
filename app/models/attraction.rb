@@ -37,7 +37,7 @@ class Attraction
     results = DB.exec(
       <<-SQL
       UPDATE attractions
-      SET name ='#{opts["name"]}', description='#{opts["description"]}', submitted_by='#{opts["submitted_by"]}', image='#{opts["image"]}', city= '#{opts["city"]}', country = '#{opts["country"]}', website = '#{opts["website"]}', rating ='#{opts["rating"]}'
+      SET name ='#{opts["name"]}', description='#{opts["description"]}', submitted_by='#{opts["submitted_by"]}', image='#{opts["image"]}', city= '#{opts["city"]}', country= '#{opts["country"]}', website= '#{opts["website"]}', rating='#{opts["rating"]}'
       WHERE id = #{id}
       RETURNING id, name, description, submitted_by, image, city, country, website, rating;
       SQL
