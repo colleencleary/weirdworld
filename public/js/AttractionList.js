@@ -3,7 +3,6 @@ class AttractionList extends React.Component {
     //console.log('$$$$$',this.props.attractions);
     return (
       <div>
-      <h1> Atrraction list</h1>
         <table>
           <tbody>
             {this.props.attractions.map( (attraction, index) => {

@@ -1,31 +1,73 @@
 @import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Rye');
 
+html {
+  box-sizing: border-box;
+}
 *, *::after, *::before {
   box-sizing: inherit;
 }
 body {
   margin: 0;
   padding: -10px;
-  background-color: #E8DAB2;
+  background-color: #4F6D7A;
   font-family: 'Love Ya Like A Sister', cursive;
 }
 header {
   background-image: url("../assets/stripes.jpg");
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 60px 0 0 0;
   background-color: #777062;
-  background-blend-mode: lighten;
+  // background-blend-mode: lighten;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   text-align: center;
-  width: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 h1 {
   font-family: 'Rye', cursive;
-  font-size: 5em;
+  font-size: 9em;
+  color: #2B9EB3;
   margin: 0 auto;
+  -webkit-text-stroke-width: .1px;
+  -webkit-text-stroke-color: black;
 }
-h2 {
-  margin: 0 auto;
+header h2 {
+  margin: -30px auto 0 auto;
+  font-size: 3em;
+}
+nav {
+  width: 100%;
+  font-family: 'Rye', cursive;
+  font-size: 2em;
+  color: #D3C7A2;
+  margin: 60px 0 0 0;
+  padding: 0;
+  background: rgba(15, 20, 23, .5);
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: black;
+}
+ul {
+  width: 100%;
+  list-style-type: none;
+  display: inline-flex;
+  justify-content: space-evenly;
+  margin: 0;
+}
+li {
+  cursor: pointer;
+  width: 33.3%;
+}
+li:hover {
+  text-shadow: 0 0 10px #DD6E42;
+}
+.attractions-container {
+  background: #EFEADD;
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px 50px;
+  border-radius: 1px;
+}
+.attractions-container h2 {
+  text-align: center;
 }
