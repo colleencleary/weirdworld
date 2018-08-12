@@ -14,6 +14,10 @@ class Attraction extends React.Component {
           <p><span>Website:</span> {this.props.attraction.website}</p>
           <p><span>Tags:</span> {this.props.attraction.tags}</p>
           <p><span>Rating:</span> {this.props.attraction.rating}</p>
+
+          <div>
+            <AttractionForm attraction ={this.props.attraction} handleSubmit={this.props.handleSubmit}/>
+          </div>
       </div>
 
     )
