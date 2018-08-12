@@ -1,13 +1,14 @@
-@import url("https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Rye");
-*, *::after, *::before {
-  box-sizing: inherit; }
+@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Rye');
 
+*, *::after, *::before {
+  box-sizing: inherit;
+}
 body {
   margin: 0;
   padding: -10px;
   background-color: #E8DAB2;
-  font-family: 'Love Ya Like A Sister', cursive; }
-
+  font-family: 'Love Ya Like A Sister', cursive;
+}
 header {
   background-image: url("../assets/stripes.jpg");
   margin: 0 auto;
@@ -18,14 +19,13 @@ header {
   background-size: cover;
   background-position: center;
   text-align: center;
-  width: 100%; }
-
+  width: 100%;
+}
 h1 {
   font-family: 'Rye', cursive;
   font-size: 5em;
-  margin: 0 auto; }
-
+  margin: 0 auto;
+}
 h2 {
-  margin: 0 auto; }
-
-/*# sourceMappingURL=main.css.map */
+  margin: 0 auto;
+}
