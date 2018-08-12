@@ -14,6 +14,12 @@ class Attractions extends React.Component {
     this.getAttraction = this.getAttraction.bind(this)
     this.deleteAttraction = this.deleteAttraction.bind(this)
   }
+
+//Did Mount
+  componentDidMount(){
+    this.getAttractions();
+  }
+
 //Handle Create
   handleCreate(attraction){
     console.log('handle create');
@@ -22,24 +28,43 @@ class Attractions extends React.Component {
   }
 //Handle Create Submit
   handleCreateSubmit(attraction){
-    console.log('handle create submit');
-    // fetch('/attractions', {
-    //   body: JSON.stringify(attraction),
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept':'application/json, text/plain, */*',
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
-    //   .then(createdAttraction => {
-    //     return createdAttraction.json()
-    //   })
-    //   .then(jsonAttraction => {
-    //     this.handleCreate(jsonAttraction)
-    //     this.toggleState('addAttractionIsVisible', 'attractionListIsVisible')
-    //   }).catch(error => console.log(error))
+    console.log('Create Submit Handled');
+    fetch('/attractions', {
+      body: JSON.stringify(attraction),
+      method: 'POST',
+      headers: {
+        'Accept':'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(createdAttraction => {
+        return createdAttraction.json()
+      })
+      .then(jsonAttraction => {
+        this.handleCreate(jsonAttraction)
+        this.toggleState('addAttractionIsVisible', 'attractionListIsVisible')
+      }).catch(error => console.log(error))
   }
 //Handle Update Submit
+  handleUpdateSubmit(attraction){
+    console.log('Update Submit Handled');
+    fetch('/attractions/'+ attraction.id, {
+      body: JSON.stringify(attraction),
+      method: 'PUT',
+      headers: {
+        'Accept' : 'applications/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(updatedAttraction =>{
+      return updatedAttraction.json()
+    })
+    .then(jsonAttraction => {
+      this.getAttraction()
+      this.toggleState('attractionListIsVisible', 'attractionIsVisible')
+    })
+    .catch(error => console.log(error))
+  }
 //DELETE
   deleteAttraction(attraction, index){
     //console.log('DELETE');
@@ -62,10 +87,7 @@ class Attractions extends React.Component {
       attraction: attraction
     })
   }
-//Did Mount
-  componentDidMount(){
-    this.getAttractions();
-  }
+
 //Get ALL
   getAttractions(){
     fetch('/attractions')
@@ -85,8 +107,8 @@ class Attractions extends React.Component {
   }
 
   render(){
-    console.log('^^^^^',this.state.attractions);
-    console.log('@@@@@',this.state.attraction);
+    //console.log('^^^^^',this.state.attractions);
+    //console.log('@@@@@',this.state.attraction);
     return (
       <div>
         <h2> attractions </h2>

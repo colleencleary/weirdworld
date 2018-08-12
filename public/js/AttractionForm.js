@@ -1,4 +1,47 @@
 class AttractionForm extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      name: '',
+      description: '',
+      submitted_by: '',
+      image: '',
+      city: '',
+      country: '',
+      website: '',
+      tags: {},
+      rating: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  componentDidMount(){
+    if(this.props.attraction){
+      this.setState({
+        name: this.props.attraction.name,
+        description: this.props.attraction.decription,
+        submitted_by: this.props.attraction.submitted_by,
+        image: this.props.attraction.image,
+        city: this.props.attraction.city,
+        country: this.props.attraction.country,
+        website: this.props.attraction.website,
+        tags: this.props.attraction.tags,
+        rating: this.props.attraction.rating,
+        id: this.props.attraction.id
+
+      })
+    }
+  }
+  handleChange(event){
+    this.setState({[event.target.id]: event.target.value})
+    console.log(this.state[event.target.id])
+  }
+
+  handleSubmit(event){
+    event.preventDefault()
+    this.props.handleSubmit(this.state)
+  }
+
   render(){
     return (
       <div>
