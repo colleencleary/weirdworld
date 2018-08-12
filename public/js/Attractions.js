@@ -14,8 +14,35 @@ class Attractions extends React.Component {
     this.getAttraction = this.getAttraction.bind(this)
     this.deleteAttraction = this.deleteAttraction.bind(this)
   }
-
+//Handle Create
+  handleCreate(attraction){
+    console.log('handle create');
+    console.log([attraction, ...this.state.attractions])
+    this.setState({attractions:[attraction, ...this.state.attractions]})
+  }
+//Handle Create Submit
+  handleCreateSubmit(attraction){
+    console.log('handle create submit');
+    // fetch('/attractions', {
+    //   body: JSON.stringify(attraction),
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept':'application/json, text/plain, */*',
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    //   .then(createdAttraction => {
+    //     return createdAttraction.json()
+    //   })
+    //   .then(jsonAttraction => {
+    //     this.handleCreate(jsonAttraction)
+    //     this.toggleState('addAttractionIsVisible', 'attractionListIsVisible')
+    //   }).catch(error => console.log(error))
+  }
+//Handle Update Submit
+//DELETE
   deleteAttraction(attraction, index){
+    //console.log('DELETE');
     fetch('/attractions/' + attraction.id,
     {
       method: 'DELETE'
@@ -29,18 +56,18 @@ class Attractions extends React.Component {
       })
     })
   }
-
+//GET ONE
   getAttraction(attraction){
     this.setState({
       attraction: attraction
     })
   }
-
+//Did Mount
   componentDidMount(){
-    this.getattractions();
+    this.getAttractions();
   }
-
-  getattractions(){
+//Get ALL
+  getAttractions(){
     fetch('/attractions')
       .then(response => response.json())
       .then(data => {
@@ -49,7 +76,7 @@ class Attractions extends React.Component {
         })
       }).catch(error => console.log(error))
   }
-
+//toggleState
   toggleState(state1, state2){
     this.setState({
       [state1]: !this.state[state1],
@@ -58,28 +85,36 @@ class Attractions extends React.Component {
   }
 
   render(){
+    console.log('^^^^^',this.state.attractions);
+    console.log('@@@@@',this.state.attraction);
     return (
+      <div>
         <h2> attractions </h2>
         { this.state.attractionListIsVisible ?
           <button onClick={()=>this.toggleState("addattractionIsVisible", "attractionListIsVisible")}>Add a attraction</button>
           : ''
         }
         { this.state.attractionListIsVisible ?
-          <attractionList
+          <AttractionList
             toggleState={this.toggleState}
             attractions={this.state.attractions}
-            getattraction={this.getattraction}
-            deleteattraction={this.deleteattraction}
+            getAttraction={this.getAttraction}
+            deleteAttraction={this.deleteAttraction}
           /> : ''}
         { this.state.addattractionIsVisible ?
-          <attractionForm
+          <AttractionForm
             toggleState={this.toggleState}
+            handleCreate = {this.handleCreate}
+            handleSubmit = {this.handleCreateSubmit}
           /> : ''}
         { this.state.attractionIsVisible ?
-          <attraction
+          <Attraction
             toggleState={this.toggleState}
+            getAttraction={this.getAttraction}
             attraction={this.state.attraction}
+            handleSubmit = {this.handleUpdateSubmit}
           /> : ''}
+
       </div>
     )
   }
