@@ -111,6 +111,11 @@ class Attractions extends React.Component {
     //console.log('@@@@@',this.state.attraction);
     return (
       <div>
+        // <h2> attractions </h2>
+        { this.state.attractionListIsVisible ?
+          <button onClick={()=>this.toggleState("addattractionIsVisible", "attractionListIsVisible")}>Add a attraction</button>
+          : ''
+        }
         { this.state.attractionListIsVisible ?
           <AttractionList
             toggleState={this.toggleState}
