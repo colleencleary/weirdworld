@@ -19,11 +19,11 @@ class Attractions extends React.Component {
 
 
 //Handle Create
-  handleCreate(attraction){
-    console.log('handle create');
-    console.log([attraction, ...this.state.attractions])
-    this.setState({attractions:[attraction, ...this.state.attractions]})
-  }
+handleCreate(attraction){
+  console.log('handle create');
+  console.log([attraction, ...this.state.attractions])
+  this.setState({attractions:[attraction, ...this.state.attractions]})
+}
 
 
 //Handle Create Submit
