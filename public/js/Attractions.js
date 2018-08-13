@@ -13,19 +13,19 @@ class Attractions extends React.Component {
     this.getAttractions = this.getAttractions.bind(this)
     this.getAttraction = this.getAttraction.bind(this)
     this.deleteAttraction = this.deleteAttraction.bind(this)
+    this.updateAttraction =
+    this.updateAttraction.bind(this)
   }
 
-//Did Mount
-  componentDidMount(){
-    this.getAttractions();
-  }
 
 //Handle Create
-  handleCreate(attraction){
-    console.log('handle create');
-    console.log([attraction, ...this.state.attractions])
-    this.setState({attractions:[attraction, ...this.state.attractions]})
-  }
+handleCreate(attraction){
+  console.log('handle create');
+  console.log([attraction, ...this.state.attractions])
+  this.setState({attractions:[attraction, ...this.state.attractions]})
+}
+
+
 //Handle Create Submit
   handleCreateSubmit(attraction){
     console.log('Create Submit Handled');
@@ -45,9 +45,11 @@ class Attractions extends React.Component {
         this.toggleState('addAttractionIsVisible', 'attractionListIsVisible')
       }).catch(error => console.log(error))
   }
+
+
 //Handle Update Submit
-  handleUpdateSubmit(attraction){
-    console.log('Update Submit Handled');
+  updateAttraction(attraction){
+    // console.log('Update Submit Handled');
     fetch('/attractions/'+ attraction.id, {
       body: JSON.stringify(attraction),
       method: 'PUT',
@@ -65,46 +67,54 @@ class Attractions extends React.Component {
     })
     .catch(error => console.log(error))
   }
-//DELETE
-  deleteAttraction(attraction, index){
-    //console.log('DELETE');
-    fetch('/attractions/' + attraction.id,
-    {
-      method: 'DELETE'
-    })
-    .then(data => {
-      this.setState({
-        attractions: [
-          ...this.state.attractions.slice(0, index),
-          ...this.state.attractions.slice(index + 1)
-        ]
-      })
-    })
-  }
-//GET ONE
-  getAttraction(attraction){
-    this.setState({
-      attraction: attraction
-    })
-  }
 
-//Get ALL
-  getAttractions(){
-    fetch('/attractions')
-      .then(response => response.json())
+  //DELETE
+    deleteAttraction(attraction, index){
+      //console.log('DELETE');
+      fetch('/attractions/' + attraction.id,
+      {
+        method: 'DELETE'
+      })
       .then(data => {
         this.setState({
-          attractions: data
+          attractions: [
+            ...this.state.attractions.slice(0, index),
+            ...this.state.attractions.slice(index + 1)
+          ]
         })
-      }).catch(error => console.log(error))
-  }
-//toggleState
-  toggleState(state1, state2){
-    this.setState({
-      [state1]: !this.state[state1],
-      [state2]: !this.state[state2]
-    })
-  }
+      })
+    }
+
+  //GET ONE
+    getAttraction(attraction){
+      this.setState({
+        attraction: attraction
+      })
+    }
+
+  //Did Mount
+    componentDidMount(){
+      this.getAttractions();
+    }
+
+  //Get ALL
+    getAttractions(){
+      fetch('/attractions')
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            attractions: data
+          })
+        }).catch(error => console.log(error))
+    }
+
+  //toggleState
+    toggleState(state1, state2){
+      this.setState({
+        [state1]: !this.state[state1],
+        [state2]: !this.state[state2]
+      })
+    }
 
   render(){
     //console.log('^^^^^',this.state.attractions);
