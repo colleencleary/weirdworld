@@ -38,36 +38,89 @@ header h2 {
 }
 nav {
   width: 100%;
-  font-family: 'Rye', cursive;
-  font-size: 2em;
-  color: #D3C7A2;
   margin: 60px 0 0 0;
   padding: 0;
   background: rgba(15, 20, 23, .5);
-  -webkit-text-stroke-width: .5px;
-  -webkit-text-stroke-color: black;
 }
 ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+}
+li {
+  cursor: pointer;
+}
+.nav-header {
   width: 100%;
   list-style-type: none;
   display: inline-flex;
   justify-content: space-evenly;
   margin: 0;
+  font-family: 'Rye', cursive;
+  font-size: 2em;
+  color: #D3C7A2;
+  // -webkit-text-stroke-width: .5px;
+  // -webkit-text-stroke-color: black;
 }
-li {
-  cursor: pointer;
-  width: 33.3%;
+.attractions-header, .events-header, .itinerary-header {
+  display: block;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 33%;
+  z-index: 1;
 }
-li:hover {
+.nav-header li:hover {
   text-shadow: 0 0 10px #DD6E42;
 }
+// .dropdown-container {
+//   width: 33%;
+//   display: flex;
+//   justify-content: center;
+// }
+.dropdown {
+  // display: block;
+  // position: absolute;
+  // flex-direction: column;
+  text-align: center;
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: .7em;
+  background: rgba(15, 20, 23, .5);
+  color: #DD6E42;
+  width: 33%;
+  padding: 1%;
+  z-index: 1;
+}
+.dropdown li:hover {
+  text-shadow: 0 0 10px #4F6D7A;
+}
 .attractions-container {
-  background: #EFEADD;
+  // background: #EFEADD;
   width: 80%;
   margin: 50px auto;
   padding: 20px 50px;
   border-radius: 1px;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
 }
 .attractions-container h2 {
   text-align: center;
+}
+.attractions-menu, .events-menu, .itinerary-menu {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.attractions-header:hover .attractions-menu {
+  display: block;
+}
+.events-header:hover .events-menu {
+  display: block;
+}
+.itinerary-header:hover .itinerary-menu {
+  display: block;
 }
