@@ -58,6 +58,9 @@ li {
   font-size: 2em;
   color: #D3C7A2; }
 
+.nav-header li:hover {
+  text-shadow: 0 0 10px #DD6E42; }
+
 .attractions-header, .events-header, .itinerary-header {
   display: block;
   flex-direction: column;
@@ -68,38 +71,21 @@ li {
   width: 33%;
   z-index: 1; }
 
-.nav-header li:hover {
-  text-shadow: 0 0 10px #DD6E42; }
-
 .dropdown {
   text-align: center;
   font-family: 'Love Ya Like A Sister', cursive;
   font-size: .7em;
-  background: rgba(15, 20, 23, 0.5);
-  color: #DD6E42;
+  background: rgba(211, 199, 162, 0.9);
+  color: #F24333;
   width: 33%;
   padding: 1%;
-  z-index: 1; }
-
-.dropdown li:hover {
-  text-shadow: 0 0 10px #4F6D7A; }
-
-.attractions-container {
-  width: 80%;
-  margin: 50px auto;
-  padding: 20px 50px;
-  border-radius: 1px;
-  z-index: 0;
-  display: flex;
-  justify-content: center; }
-
-.attractions-container h2 {
-  text-align: center; }
-
-.attractions-menu, .events-menu, .itinerary-menu {
+  z-index: 1;
   display: none;
   position: absolute;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
+
+.dropdown li:hover {
+  text-shadow: 0 0 10px #4F6D7A; }
 
 .attractions-header:hover .attractions-menu {
   display: block; }
@@ -109,5 +95,20 @@ li {
 
 .itinerary-header:hover .itinerary-menu {
   display: block; }
+
+.attractions-container {
+  background: #EFEADD;
+  width: 80%;
+  height: 100%;
+  margin: 0px auto;
+  padding: 0px 50px;
+  border-radius: 1px;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
+
+.attractions-container h2 {
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
