@@ -10,25 +10,45 @@ class Attractions extends React.Component {
       attraction: {}
     }
     this.toggleState = this.toggleState.bind(this)
-    this.getAttractions = this.getAttractions.bind(this)
     this.getAttraction = this.getAttraction.bind(this)
     this.deleteAttraction = this.deleteAttraction.bind(this)
-    this.updateAttraction =
-    this.updateAttraction.bind(this)
+    this.updateAttraction = this.updateAttraction.bind(this)
+    this.handleCreate = this.handleCreate.bind(this)
+    this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
   }
 
+//Did Mount
+  componentDidMount(){
+    this.getAttractions();
+  }
+
+  //DELETE
+    deleteAttraction(attraction, index){
+      //console.log('DELETE');
+      fetch('/attractions/' + attraction.id,
+      {
+        method: 'DELETE'
+      })
+      .then(data => {
+        this.setState({
+          attractions: [
+            ...this.state.attractions.slice(0, index),
+            ...this.state.attractions.slice(index + 1)
+          ]
+        })
+      })
+    }
 
 //Handle Create
-handleCreate(attraction){
-  console.log('handle create');
-  console.log([attraction, ...this.state.attractions])
-  this.setState({attractions:[attraction, ...this.state.attractions]})
-}
+handleCreate (person) {
+   const updatedAttractions = this.state.attractions
+   updatedAttractions.unshift(attraction)
+   this.setState({attractions: updatedAttractions})
+ }
 
 
 //Handle Create Submit
   handleCreateSubmit(attraction){
-    console.log('Create Submit Handled');
     fetch('/attractions', {
       body: JSON.stringify(attraction),
       method: 'POST',
@@ -68,33 +88,9 @@ handleCreate(attraction){
     .catch(error => console.log(error))
   }
 
-  //DELETE
-    deleteAttraction(attraction, index){
-      //console.log('DELETE');
-      fetch('/attractions/' + attraction.id,
-      {
-        method: 'DELETE'
-      })
-      .then(data => {
-        this.setState({
-          attractions: [
-            ...this.state.attractions.slice(0, index),
-            ...this.state.attractions.slice(index + 1)
-          ]
-        })
-      })
-    }
-
   //GET ONE
     getAttraction(attraction){
-      this.setState({
-        attraction: attraction
-      })
-    }
-
-  //Did Mount
-    componentDidMount(){
-      this.getAttractions();
+      this.setState({attraction: attraction})
     }
 
   //Get ALL
@@ -121,9 +117,8 @@ handleCreate(attraction){
     //console.log('@@@@@',this.state.attraction);
     return (
       <div>
-        // <h2> attractions </h2>
         { this.state.attractionListIsVisible ?
-          <button onClick={()=>this.toggleState("addattractionIsVisible", "attractionListIsVisible")}>Add a attraction</button>
+          <button onClick={()=>this.toggleState("addAttractionIsVisible", "attractionListIsVisible")}>Add a attraction</button>
           : ''
         }
         { this.state.attractionListIsVisible ?
@@ -133,7 +128,7 @@ handleCreate(attraction){
             getAttraction={this.getAttraction}
             deleteAttraction={this.deleteAttraction}
           /> : ''}
-        { this.state.addattractionIsVisible ?
+        { this.state.addAttractionIsVisible ?
           <AttractionForm
             toggleState={this.toggleState}
             handleCreate = {this.handleCreate}
@@ -142,9 +137,8 @@ handleCreate(attraction){
         { this.state.attractionIsVisible ?
           <Attraction
             toggleState={this.toggleState}
-            getAttraction={this.getAttraction}
             attraction={this.state.attraction}
-            handleSubmit = {this.handleUpdateSubmit}
+            handleSubmit = {this.updateAttraction}
           /> : ''}
 
       </div>
