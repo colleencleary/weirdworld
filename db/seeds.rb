@@ -12,6 +12,11 @@ INSERT INTO attractions (name, description, submitted_by, image, city, country, 
 
 INSERT INTO attractions (name, description, submitted_by, image, city, country, website, tags, rating) VALUES ('Coney Island', 'Freakshows and boardwalks and bars and mermaids and famous hotdogs!', 'Brooklyn Bob', 'https://www.coneyisland.com/sites/default/files/styles/large/public/mariebanner17%20%281%29.jpg?itok=f59CsYDi', 'New York City', 'United States', 'https://www.coneyisland.com/', '{0}', '4.5');
 
+INSERT INTO attractions (name, description, submitted_by, image, city, country, website, tags, rating) VALUES ('The Mutter Museum', 'medical curiosities', 'Philly Phil','https://orion-uploads.openroadmedia.com/lg_0c126a1eb90f-mutter-museum_featured.jpg', 'Philadelphia', 'United States', 'http://muttermuseum.org/about/', '{0}', '4.5');
+
+
+INSERT INTO attractions (name, description, submitted_by, image, city, country, website, tags, rating) VALUES ('Trans-Allegheny Lunatic Asylum', 'The Trans-Allegheny Lunatic Asylum, later called Weston State Hospital, is an inactive hospital and sanctuary for the mentally ill that was in operation between 1864 and 1994. The hospital soon suffered from overcrowding and poor sanitation. Patients that could not be controlled were often locked in cages. Due to the real suffering experienced by people who lived and were treated at the facility — and due to reports of strange sights, voices, and events — many believe the building to be haunted. The facility now hosts overnight ghost tours, which run for $100.', 'SouthernSarah','http://trans-alleghenylunaticasylum.com/pagegraphics/hsB.jpg', 'Weston, WV', 'United States', 'http://trans-alleghenylunaticasylum.com/', '{0}', '4.5');
+
 
 
 CREATE TABLE comments (id SERIAL, content TEXT, username VARCHAR(25), attraction_id INT);
