@@ -10,7 +10,8 @@ class AttractionForm extends React.Component {
       country: '',
       website: '',
       tags: {},
-      rating: ''
+      rating: '',
+      comments: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,6 +28,7 @@ class AttractionForm extends React.Component {
         website: this.props.attraction.website,
         tags: this.props.attraction.tags,
         rating: this.props.attraction.rating,
+        comments: this.props.attraction.comments,
         id: this.props.attraction.id
 
       })
@@ -73,6 +75,10 @@ class AttractionForm extends React.Component {
           <label for='rating'>Rating</label>
             <input type='text'/>
             <br/>
+          <label for='comment'>Comments</label>
+            <input type='text'/>
+          <br/>
+
             <input type='submit' />
         </form>
 
