@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Rye");
+@import url("https://fonts.googleapis.com/css?family=Sawarabi+Gothic");
 html {
   box-sizing: border-box; }
 
@@ -135,5 +136,12 @@ li {
   color: #000000;
   font-size: 20px;
   line-height: 24px; }
+
+h3 {
+  font-family: 'Sawarabi Gothic', sans-serif; }
+
+span {
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: red; }
 
 /*# sourceMappingURL=main.css.map */
