@@ -8,8 +8,6 @@ class Comment extends React.Component {
           <p><span>Content:</span> {this.props.comment.content}</p>
           <p><span>Submitted By:</span> {this.props.comment.username}</p>
 
-
-
           <div>
             <h4> Edit </h4>
             <CommentForm comment ={this.props.comment} handleSubmit={this.props.handleSubmit}/>

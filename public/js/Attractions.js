@@ -10,23 +10,49 @@ class Attractions extends React.Component {
       attraction: {}
     }
     this.toggleState = this.toggleState.bind(this)
-    this.getAttractions = this.getAttractions.bind(this)
+    this.toggleHome = this.toggleHome.bind(this)
     this.getAttraction = this.getAttraction.bind(this)
     this.deleteAttraction = this.deleteAttraction.bind(this)
+<<<<<<< HEAD
+=======
+    this.updateAttraction = this.updateAttraction.bind(this)
+    this.handleCreate = this.handleCreate.bind(this)
+    this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
+>>>>>>> fe690212bbdf0361454055667003004095c01129
   }
 
+//Did Mount
+  componentDidMount(){
+    this.getAttractions();
+  }
+
+  //DELETE
+    deleteAttraction(attraction, index){
+      //console.log('DELETE');
+      fetch('/attractions/' + attraction.id,
+      {
+        method: 'DELETE'
+      })
+      .then(data => {
+        this.setState({
+          attractions: [
+            ...this.state.attractions.slice(0, index),
+            ...this.state.attractions.slice(index + 1)
+          ]
+        })
+      })
+    }
 
 //Handle Create
-handleCreate(attraction){
-  console.log('handle create');
-  console.log([attraction, ...this.state.attractions])
-  this.setState({attractions:[attraction, ...this.state.attractions]})
-}
+handleCreate (person) {
+   const updatedAttractions = this.state.attractions
+   updatedAttractions.unshift(attraction)
+   this.setState({attractions: updatedAttractions})
+ }
 
 
 //Handle Create Submit
   handleCreateSubmit(attraction){
-    console.log('Create Submit Handled');
     fetch('/attractions', {
       body: JSON.stringify(attraction),
       method: 'POST',
@@ -66,6 +92,7 @@ handleCreate(attraction){
     .catch(error => console.log(error))
   }
 
+<<<<<<< HEAD
 
 
 
@@ -87,16 +114,11 @@ handleCreate(attraction){
       })
     }
 
+=======
+>>>>>>> fe690212bbdf0361454055667003004095c01129
   //GET ONE
     getAttraction(attraction){
-      this.setState({
-        attraction: attraction
-      })
-    }
-
-  //Did Mount
-    componentDidMount(){
-      this.getAttractions();
+      this.setState({attraction: attraction})
     }
 
   //Get ALL
@@ -118,16 +140,22 @@ handleCreate(attraction){
       })
     }
 
+    toggleHome(){
+      this.setState({
+        ['attractionListIsVisible']: true,
+        ['addAttractionIsVisible']: false,
+        ['attractionIsVisible']: false,
+        ['editAttractionIsVisible']: false
+      })
+    }
+
   render(){
     //console.log('^^^^^',this.state.attractions);
     //console.log('@@@@@',this.state.attraction);
     return (
       <div>
-        <h2> attractions </h2>
-        { this.state.attractionListIsVisible ?
-          <button onClick={()=>this.toggleState("addattractionIsVisible", "attractionListIsVisible")}>Add a attraction</button>
-          : ''
-        }
+      <Header toggleState={this.toggleState} toggleHome={this.toggleHome}/>
+      <div className="attractions-container">
         { this.state.attractionListIsVisible ?
           <AttractionList
             toggleState={this.toggleState}
@@ -135,7 +163,7 @@ handleCreate(attraction){
             getAttraction={this.getAttraction}
             deleteAttraction={this.deleteAttraction}
           /> : ''}
-        { this.state.addattractionIsVisible ?
+        { this.state.addAttractionIsVisible ?
           <AttractionForm
             toggleState={this.toggleState}
             handleCreate = {this.handleCreate}
@@ -144,11 +172,11 @@ handleCreate(attraction){
         { this.state.attractionIsVisible ?
           <Attraction
             toggleState={this.toggleState}
-            getAttraction={this.getAttraction}
             attraction={this.state.attraction}
-            handleSubmit = {this.handleUpdateSubmit}
+            handleSubmit = {this.updateAttraction}
           /> : ''}
 
+        </div>
       </div>
     )
   }

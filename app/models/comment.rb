@@ -1,4 +1,3 @@
-comment.rb
 class Comment
   if(ENV['DATABASE_URL'])
     uri = URI.parse(ENV['DATABASE_URL'])
@@ -52,6 +51,33 @@ class Comment
 # Get One by ID
   def self.find(id)
     results = DB.exec(
+      # returns comments based on attraction id
+      # <<-SQL
+      # SELECT
+      # comments.* ,
+      # attractions.id as id_from_attraction,
+      # attractions.name as attraction_name,
+      # attractions.description as attraction_decription
+      # FROM attractions
+      # LEFT JOIN comments
+      # ON comments.attraction_id = attractions.id
+      # WHERE attractions.id = #{id};
+      # SQL
+
+      # Returns where id = comment id
+      # <<-SQL
+      # SELECT
+      # comments.* ,
+      # attractions.id as id_from_attraction,
+      # attractions.name as attraction_name,
+      # attractions.description as attraction_decription
+      # FROM attractions
+      # LEFT JOIN comments
+      # ON comments.attraction_id = attractions.id
+      # WHERE comments.id = #{id};
+      # SQL
+
+      # Returns where id is equal to comments.attraction_id
       <<-SQL
       SELECT
       comments.* ,
@@ -61,7 +87,7 @@ class Comment
       FROM attractions
       LEFT JOIN comments
       ON comments.attraction_id = attractions.id
-      WHERE attractions.id = #{id};
+      WHERE comments.attraction_id = #{id};
       SQL
     )
 
