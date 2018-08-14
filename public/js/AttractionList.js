@@ -10,6 +10,7 @@ class AttractionList extends React.Component {
                   this.props.getAttraction(attraction)}}>
                     <img src={attraction.image} alt={attraction.name} />
                     <h3> {attraction.name} </h3>
+                    <h4> {attraction.city} </h4>
                 </div>
               )
             })}
