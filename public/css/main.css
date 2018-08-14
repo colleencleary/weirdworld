@@ -146,22 +146,14 @@ li {
   font-size: 20px;
   line-height: 24px; }
 
+.attraction-div h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 16px; }
 
-h3 {
-  font-family: 'Sawarabi Gothic', sans-serif; }
-
-span {
-  font-family: 'Love Ya Like A Sister', cursive;
-  color: red; }
-
-  .attraction-div h4 {
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    line-height: 16px; }
-
-  .attraction-div h3:hover {
-    text-decoration: underline; }
+.attraction-div h3:hover {
+  text-decoration: underline; }
 
 .form-group {
   max-width: 75%;
