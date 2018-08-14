@@ -11,13 +11,32 @@ class Comments extends React.Component {
     }
     this.toggleState = this.toggleState.bind(this)
     this.getComments = this.getComments.bind(this)
-    this.getComment = this.getComment.bind(this)
     this.deleteComment = this.deleteComment.bind(this)
+    this.updateComment = this.updateComment.bind(this)
+    this.handleCreate = this.handleCreate.bind(this)
+    this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
   }
 
 //Did Mount
   componentDidMount(){
     this.getComments();
+  }
+
+//DELETE
+  deleteComment(comment, index){
+    //console.log('DELETE');
+    fetch('/comments/' + comment.id,
+    {
+      method: 'DELETE'
+    })
+    .then(data => {
+      this.setState({
+        comments: [
+          ...this.state.comments.slice(0, index),
+          ...this.state.comments.slice(index + 1)
+        ]
+      })
+    })
   }
 
 //Handle Create
@@ -26,6 +45,7 @@ class Comments extends React.Component {
     console.log([comment, ...this.state.comments])
     this.setState({comments:[comment, ...this.state.comments]})
   }
+
 //Handle Create Submit
   handleCreateSubmit(comment){
     console.log('Create Submit Handled');
@@ -46,7 +66,7 @@ class Comments extends React.Component {
       }).catch(error => console.log(error))
   }
 //Handle Update Submit
-  handleUpdateSubmit(comment){
+  updateComment(comment){
     console.log('Update Submit Handled');
     fetch('/comments/'+ comment.id, {
       body: JSON.stringify(comment),
@@ -65,22 +85,7 @@ class Comments extends React.Component {
     })
     .catch(error => console.log(error))
   }
-//DELETE
-  deleteComment(comment, index){
-    //console.log('DELETE');
-    fetch('/comments/' + comment.id,
-    {
-      method: 'DELETE'
-    })
-    .then(data => {
-      this.setState({
-        comments: [
-          ...this.state.comments.slice(0, index),
-          ...this.state.comments.slice(index + 1)
-        ]
-      })
-    })
-  }
+
 //GET ONE
   getComment(comment){
     this.setState({
@@ -108,7 +113,7 @@ class Comments extends React.Component {
   }
 
   render(){
-    console.log('^^^^^',this.state.comments);
+    //console.log('^^^^^',this.state.comments);
     return (
       <div>
         <h2> comments </h2>
@@ -134,7 +139,6 @@ class Comments extends React.Component {
 
           <Comment
             toggleState={this.toggleState}
-            getComment={this.getComment}
             comment={this.state.comment}
             handleSubmit = {this.handleUpdateSubmit}
           />

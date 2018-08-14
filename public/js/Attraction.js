@@ -1,6 +1,7 @@
 class Attraction extends React.Component {
   render(){
       //console.log('*****',this.props.attraction);
+      let comments = this.props.attraction.comments
     return (
       <div>
       <button onClick={()=> this.props.toggleState("attractionListIsVisible", "attractionIsVisible")}>Back</button>
@@ -15,10 +16,14 @@ class Attraction extends React.Component {
           <p><span>Description:</span> {this.props.attraction.description}</p>
 
           <p><span>Tags:</span> {this.props.attraction.tags}</p>
-
+          <div>
+             <p>Comments:{JSON.stringify(comments)}</p>
+          </div>
           <div>
             <AttractionForm attraction={this.props.attraction} handleSubmit={this.props.handleSubmit}/>
           </div>
+
+          <Comments />
       </div>
     )
   }

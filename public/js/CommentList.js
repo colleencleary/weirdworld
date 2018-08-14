@@ -1,6 +1,6 @@
 class CommentList extends React.Component {
   render(){
-    console.log('$$$$$',this.props.comments, '$$$$$');
+    //console.log('$$$$$',this.props.comments, '$$$$$');
     return (
       <div>
         <table>

@@ -24,20 +24,24 @@ class CommentForm extends React.Component {
   }
 
   handleSubmit(event){
-    event.preventDefault()
+    //event.preventDefault()
     this.props.handleSubmit(this.state)
   }
 
   render(){
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
 
           <label for='comment'>Comment</label>
-            <input type='text'/>
+            <input
+              type='text'
+              onChange={this.handleChange} value={this.state.content}/>
             <br/>
           <label for='submitted_by'>Submitted By</label>
-            <input type='text'/>
+            <input
+              type='text'
+              onChange={this.handleChange} value={this.state.submitted_by}/>
             <br/>
           <label for='attraction_id'>attraction_id</label>
             <input type='text'/>
