@@ -205,12 +205,34 @@ li {
 }
 
 // attraction styling
-h3 {
-  font-family: 'Sawarabi Gothic', sans-serif;
+.name {
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 55px;
+  margin: auto;
+  color: rgb(191, 118, 21);
+  text-shadow: 0 0 6px #187887;
+
 }
 span {
   font-family: 'Love Ya Like A Sister', cursive;
-  color: red;
+  color: rgb(191, 118, 21);
+  font-size: 15px;
+  text-decoration: underline;
+
+}
+.title {
+  font-family: 'Sawarabi Gothic', sans-serif;
+  margin: 8px;
+  // padding: 6px;
+
+}
+
+.background {
+  background-color: rgba(102, 153, 153, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px;
+  text-align: center;
 }
 
 
