@@ -167,6 +167,12 @@ handleCreate (person) {
             attraction={this.state.attraction}
             handleSubmit = {this.updateAttraction}
           /> : ''}
+          { this.state.editAttractionIsVisible ?
+            <Attraction
+              toggleState={this.toggleState}
+              attraction={this.state.attraction}
+              handleSubmit = {this.updateAttraction}
+            /> : ''}
 
       </div>
       <Footer />

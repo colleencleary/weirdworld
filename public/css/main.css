@@ -8,7 +8,7 @@ html {
 
 body {
   margin: 0;
-  padding: -10px;
+  padding: 0;
   background-color: #33464E;
   font-family: 'Love Ya Like A Sister', cursive; }
 
@@ -48,6 +48,24 @@ ul {
 
 li {
   cursor: pointer; }
+
+footer {
+  padding: 20px 0 30px 0;
+  background-color: #D3C7A2;
+  box-shadow: 0px 0px 10px black;
+  text-align: center;
+  font-size: 1.2em; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: underline;
+  color: #bf7615; }
+
+footer h4, footer h5 {
+  margin: 0; }
 
 .home-link {
   cursor: pointer; }
@@ -105,7 +123,7 @@ li {
   background: #EFEADD;
   width: 90%;
   max-width: 1100px;
-  margin: 0px auto;
+  margin: 0px auto 80px auto;
   padding: 0px 50px;
   border-radius: 1px;
   display: flex;
@@ -196,26 +214,45 @@ li {
 
 .name {
   font-family: 'Love Ya Like A Sister', cursive;
-  font-size: 55px;
-  margin: auto;
+  font-size: 80px;
+  line-height: 70px;
+  margin: 0 auto;
   color: #bf7615;
   text-shadow: 0 0 6px #187887; }
 
 span {
   font-family: 'Love Ya Like A Sister', cursive;
-  color: #bf7615;
-  font-size: 15px;
-  text-decoration: underline; }
+  font-size: 15px; }
+
+.subtitle {
+  font-size: 26px;
+  margin: 0; }
 
 .title {
   font-family: 'Sawarabi Gothic', sans-serif;
-  margin: 8px; }
+  font-size: 13px;
+  margin: 0; }
+
+.description {
+  font-family: 'Sawarabi Gothic', sans-serif;
+  font-size: 20px; }
+
+.tag-container {
+  margin-top: 80px; }
 
 .background {
+  width: 80%;
   background-color: rgba(102, 153, 153, 0.1);
   padding: 15px;
   border-radius: 10px;
-  margin: 20px;
+  margin: 20px auto;
   text-align: center; }
+
+.background img {
+  width: 80%;
+  height: auto;
+  margin: 20px;
+  object-fit: cover;
+  border-radius: 2px; }
 
 /*# sourceMappingURL=main.css.map */

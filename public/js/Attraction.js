@@ -8,19 +8,17 @@ class Attraction extends React.Component {
 
           <p class="name">{this.props.attraction.name}</p>
 
-          <p class="title">{this.props.attraction.city}, {this.props.attraction.country}</p>
+          <h2 class="subtitle">{this.props.attraction.city}, {this.props.attraction.country}</h2>
 
-          <p class="title">{this.props.attraction.website}</p>
+          <p class="title"><a target="_blank" href={this.props.attraction.website}> {this.props.attraction.website}</a> | rating: {this.props.attraction.rating}</p>
 
-          <p class="title"><span>Rating:</span> {this.props.attraction.rating}</p>
-
-          <p class="title"><span>Submitted By:</span> {this.props.attraction.submitted_by}</p>
+          <p class="title">submitted by: {this.props.attraction.submitted_by}</p>
 
           <img src={this.props.attraction.image} alt={this.props.attraction.name} />
 
-          <p class="title">{this.props.attraction.description}</p>
+          <p class="description">{this.props.attraction.description}</p>
 
-          <p class="title"><span>Tags:</span> {this.props.attraction.tags}</p>
+          <p class="tag-container"><span>Tags:</span> {this.props.attraction.tags}</p>
           </div>
 
           <div>
