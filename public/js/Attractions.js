@@ -13,8 +13,6 @@ class Attractions extends React.Component {
     this.getAttractions = this.getAttractions.bind(this)
     this.getAttraction = this.getAttraction.bind(this)
     this.deleteAttraction = this.deleteAttraction.bind(this)
-    this.updateAttraction =
-    this.updateAttraction.bind(this)
   }
 
 
@@ -67,6 +65,10 @@ handleCreate(attraction){
     })
     .catch(error => console.log(error))
   }
+
+
+
+
 
   //DELETE
     deleteAttraction(attraction, index){
