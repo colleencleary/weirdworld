@@ -41,33 +41,55 @@ class AttractionForm extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="form-group">
         <form onSubmit={this.handleSubmit}>
-          <label for='name'>Attraction Name</label>
+          <label for='name'>
+            <span>Attraction Name</span>
+          </label>
             <input type='text' id='name' onChange={this.handleChange} value={this.state.name}/>
             <br/>
-          <label for='description'>Description</label>
+
+          <label for='description'>
+            <span>Description</span>
+          </label>
             <input type='text' id='description' onChange={this.handleChange} value={this.state.description}/>
             <br/>
-          <label for='submitted_by'>Submitted By</label>
+
+          <label for='submitted_by'>
+            <span>Submitted By</span>
+          </label>
             <input type='text' id='submitted_by' onChange={this.handleChange} value={this.state.submitted_by}/>
             <br/>
-          <label for='image'>Image</label>
+
+          <label for='image'>
+            <span>Image</span>
+          </label>
             <input type='text' id='image' onChange={this.handleChange} value={this.state.image}/>
             <br/>
-          <label for='city'>City</label>
+
+          <label for='city'>
+            <span>City</span>
+          </label>
             <input type='text' id='city' onChange={this.handleChange} value={this.state.city}/>
             <br/>
-          <label for='country'>Country</label>
+
+          <label for='country'>
+            <span>Country</span>
+          </label>
             <input type='text' id='country' onChange={this.handleChange} value={this.state.country}/>
             <br/>
-          <label for='website'>Website</label>
+
+          <label for='website'>
+            <span>Website</span>
+          </label>
             <input type='text' id='website' onChange={this.handleChange} value={this.state.website}/>
             <br/>
-            <input type='submit' />
+
+            <input type='submit' value="Submit" />
+                <button onClick={()=> this.props.toggleState("attractionListIsVisible", "addAttractionIsVisible")} class="cancel-form">Cancel</button>
         </form>
 
-        <button onClick={()=> this.props.toggleState("attractionListIsVisible", "addAttractionIsVisible")}>Cancel</button>
+
       </div>
     )
   }

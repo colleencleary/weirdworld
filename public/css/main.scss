@@ -107,12 +107,13 @@ li {
 .attractions-container {
   background: #EFEADD;
   width: 90%;
+  max-width: 1100px;
   // height: 100%;
   margin: 0px auto;
   padding: 0px 50px;
   border-radius: 1px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .attractions-container h2 {
@@ -122,26 +123,85 @@ li {
   display: inline-flex;
   align-items: baseline;
   flex-wrap: wrap;
-
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: auto;
 }
 .attraction-div {
-  width: 25%;
+  width: 300px;
   margin: 10px;
+  cursor: pointer;
 }
 .attraction-div img {
-  cursor: pointer;
-  height: 200px;
   width: 290px;
+  height: 200px;
   object-fit: cover;
   object-position: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.attraction-div img:hover {
+  opacity: .8;
 }
 .attraction-div h3 {
-display: block;
-padding: 0 16px 16px;
-margin: 0;
-color: #000000;
-font-size: 20px;
-line-height: 24px;
+  display: block;
+  padding: 0;
+  margin: 0 0 4px 0;
+  color: #000000;
+  font-size: 20px;
+  line-height: 24px;
+}
+.attraction-div h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 16px;
+}
+.attraction-div h3:hover {
+  text-decoration: underline;
+}
+//====================================Form Style================================
+.form-group{
+    max-width: 75%;
+    min-width: 300px;
+    padding: 20px 12px 10px 20px;
+    //font: 13px Arial, Helvetica, sans-serif;
+}
+.form-group label{
+    display: block;
+    margin: 0px 0px 15px 0px;
+    width: auto;
+}
+.form-group label > span{
+    width: auto;
+    font-weight: bold;
+    float: left;
+    padding-top: 8px;
+    padding-right: 5px;
+}
+
+.form-group input[type=text]{
+  width: 100%;
+}
+
+.form-group input[type=submit],
+.form-group input[type=button],
+.cancel-form{
+    border: none;
+    padding: 8px 15px 8px 15px;
+    background: #DD8642;
+    color: #fff;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin: 10px;
+}
+.form-group input[type=submit]:hover,
+.form-group input[type=button]:hover,
+.cancel-form:hover{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 // attraction styling
