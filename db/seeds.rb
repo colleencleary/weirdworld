@@ -23,6 +23,10 @@ CREATE TABLE comments (id SERIAL, content TEXT, username VARCHAR(25), attraction
 
 INSERT INTO comments (content, username, attraction_id) VALUES ('Coney Island was more fun than I could have thought!', 'acroak', 1);
 
+INSERT INTO comments (content, username, attraction_id) VALUES ('Not only does coney island have a lot of venues, they have a mermaid parade!', 'merBAE', 1);
+
+INSERT INTO comments (content, username, attraction_id) VALUES ('They got a lot of really great creepy things in jars', 'stuffinjars', 2);
+
 CREATE TABLE tags(id SERIAL, term VARCHAR(25));
 
 INSERT INTO tags (term) VALUES ('freakshow');
