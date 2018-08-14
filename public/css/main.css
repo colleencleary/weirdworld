@@ -57,6 +57,7 @@ li {
   list-style-type: none;
   display: inline-flex;
   justify-content: space-evenly;
+  align-content: flex-end;
   margin: 0;
   font-family: 'Rye', cursive;
   font-size: 2em;
@@ -116,11 +117,10 @@ li {
 
 .list-container {
   display: inline-flex;
-  align-items: baseline;
+  align-content: flex-start;
   flex-wrap: wrap;
-  width: auto;
-  max-width: 100%;
-  margin: 0 auto;
+  width: 960px;
+  margin: 30px auto;
   overflow: auto; }
 
 .attraction-div {
@@ -146,22 +146,14 @@ li {
   font-size: 20px;
   line-height: 24px; }
 
+.attraction-div h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 16px; }
 
-h3 {
-  font-family: 'Sawarabi Gothic', sans-serif; }
-
-span {
-  font-family: 'Love Ya Like A Sister', cursive;
-  color: red; }
-
-  .attraction-div h4 {
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    line-height: 16px; }
-
-  .attraction-div h3:hover {
-    text-decoration: underline; }
+.attraction-div h3:hover {
+  text-decoration: underline; }
 
 .form-group {
   max-width: 75%;
