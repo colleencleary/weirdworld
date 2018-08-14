@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Rye");
+@import url("https://fonts.googleapis.com/css?family=Sawarabi+Gothic");
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+body {
+  margin: 0;
+  padding: -10px;
+  background-color: #33464E;
+  font-family: 'Love Ya Like A Sister', cursive; }
+
+header {
+  background-image: url("../assets/stripes.jpg");
+  margin: 0 auto;
+  padding: 60px 0 0 0;
+  background-color: #777062;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
+
+h1 {
+  font-family: 'Rye', cursive;
+  font-size: 9em;
+  color: #2B9EB3;
+  margin: 0 auto;
+  -webkit-text-stroke-width: .1px;
+  -webkit-text-stroke-color: black; }
+
+header h2 {
+  margin: -30px auto 0 auto;
+  font-size: 3em; }
+
+nav {
+  width: 100%;
+  margin: 60px 0 0 0;
+  padding: 0;
+  background: rgba(15, 20, 23, 0.5); }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0; }
+
+li {
+  cursor: pointer; }
+
+.home-link {
+  cursor: pointer; }
+
+.nav-header {
+  width: 100%;
+  list-style-type: none;
+  display: inline-flex;
+  justify-content: space-evenly;
+  margin: 0;
+  font-family: 'Rye', cursive;
+  font-size: 2em;
+  color: #D3C7A2; }
+
+.nav-header li:hover {
+  text-shadow: 0 0 10px #DD6E42; }
+
+.attractions-header, .events-header, .itinerary-header {
+  display: block;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 33%;
+  z-index: 1; }
+
+.dropdown {
+  text-align: center;
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: .7em;
+  background: rgba(211, 199, 162, 0.9);
+  color: #DD8642;
+  width: 33%;
+  padding: 1%;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
+
+.dropdown li:hover {
+  text-shadow: 0 0 10px #4F6D7A; }
+
+.attractions-header:hover .attractions-menu {
+  display: block; }
+
+.events-header:hover .events-menu {
+  display: block; }
+
+.itinerary-header:hover .itinerary-menu {
+  display: block; }
+
+.attractions-container {
+  background: #EFEADD;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0px auto;
+  padding: 0px 50px;
+  border-radius: 1px;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
+
+.attractions-container h2 {
+  text-align: center; }
+
+.list-container {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: auto; }
+
+.attraction-div {
+  width: 300px;
+  margin: 10px;
+  cursor: pointer; }
+
+.attraction-div img {
+  width: 290px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
+
+.attraction-div img:hover {
+  opacity: .8; }
+
+.attraction-div h3 {
+  display: block;
+  padding: 0;
+  margin: 0 0 4px 0;
+  color: #000000;
+  font-size: 20px;
+  line-height: 24px; }
+
+
+h3 {
+  font-family: 'Sawarabi Gothic', sans-serif; }
+
+span {
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: red; }
+
+  .attraction-div h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 16px; }
+
+  .attraction-div h3:hover {
+    text-decoration: underline; }
+
+.form-group {
+  max-width: 75%;
+  min-width: 300px;
+  padding: 20px 12px 10px 20px; }
+
+.form-group label {
+  display: block;
+  margin: 0px 0px 15px 0px;
+  width: auto; }
+
+.form-group label > span {
+  width: auto;
+  font-weight: bold;
+  float: left;
+  padding-top: 8px;
+  padding-right: 5px; }
+
+.form-group input[type=text] {
+  width: 100%; }
+
+.form-group input[type=submit],
+.form-group input[type=button],
+.cancel-form {
+  border: none;
+  padding: 8px 15px 8px 15px;
+  background: #DD8642;
+  color: #fff;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  margin: 10px; }
+
+.form-group input[type=submit]:hover,
+.form-group input[type=button]:hover,
+.cancel-form:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
+
+h3 {
+  font-family: 'Sawarabi Gothic', sans-serif; }
+
+span {
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: red; }
+
+/*# sourceMappingURL=main.css.map */
