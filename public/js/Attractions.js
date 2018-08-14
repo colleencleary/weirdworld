@@ -168,7 +168,8 @@ handleCreate (person) {
             handleSubmit = {this.updateAttraction}
           /> : ''}
 
-        </div>
+      </div>
+      <Footer />
       </div>
     )
   }
