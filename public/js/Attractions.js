@@ -16,6 +16,10 @@ class Attractions extends React.Component {
     this.updateAttraction = this.updateAttraction.bind(this)
     this.handleCreate = this.handleCreate.bind(this)
     this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7336afc1dcbb053f41437e51c030aa33aba4dd61
   }
 
 //Did Mount
@@ -89,6 +93,14 @@ handleCreate (person) {
     .catch(error => console.log(error))
   }
 
+<<<<<<< HEAD
+
+
+
+
+
+=======
+>>>>>>> 7336afc1dcbb053f41437e51c030aa33aba4dd61
   //DELETE
     deleteAttraction(attraction, index){
       //console.log('DELETE');
@@ -106,6 +118,10 @@ handleCreate (person) {
       })
     }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7336afc1dcbb053f41437e51c030aa33aba4dd61
   //GET ONE
     getAttraction(attraction){
       this.setState({attraction: attraction})
