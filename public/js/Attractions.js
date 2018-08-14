@@ -90,8 +90,7 @@ handleCreate (person) {
     .catch(error => console.log(error))
   }
 
-
-  //DELETE
+//DELETE
     deleteAttraction(attraction, index){
       //console.log('DELETE');
       fetch('/attractions/' + attraction.id,

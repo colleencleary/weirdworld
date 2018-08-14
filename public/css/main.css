@@ -201,6 +201,12 @@ span {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
->>>>>>> 7336afc1dcbb053f41437e51c030aa33aba4dd61
+
+h3 {
+  font-family: 'Sawarabi Gothic', sans-serif; }
+
+span {
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: red; }
 
 /*# sourceMappingURL=main.css.map */
