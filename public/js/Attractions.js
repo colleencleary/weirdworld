@@ -10,6 +10,7 @@ class Attractions extends React.Component {
       attraction: {}
     }
     this.toggleState = this.toggleState.bind(this)
+    this.toggleHome = this.toggleHome.bind(this)
     this.getAttraction = this.getAttraction.bind(this)
     this.deleteAttraction = this.deleteAttraction.bind(this)
     this.updateAttraction = this.updateAttraction.bind(this)
@@ -112,15 +113,22 @@ handleCreate (person) {
       })
     }
 
+    toggleHome(){
+      this.setState({
+        ['attractionListIsVisible']: true,
+        ['addAttractionIsVisible']: false,
+        ['attractionIsVisible']: false,
+        ['editAttractionIsVisible']: false
+      })
+    }
+
   render(){
     //console.log('^^^^^',this.state.attractions);
     //console.log('@@@@@',this.state.attraction);
     return (
       <div>
-        { this.state.attractionListIsVisible ?
-          <button onClick={()=>this.toggleState("addAttractionIsVisible", "attractionListIsVisible")}>Add a attraction</button>
-          : ''
-        }
+      <Header toggleState={this.toggleState} toggleHome={this.toggleHome}/>
+      <div className="attractions-container">
         { this.state.attractionListIsVisible ?
           <AttractionList
             toggleState={this.toggleState}
@@ -141,6 +149,7 @@ handleCreate (person) {
             handleSubmit = {this.updateAttraction}
           /> : ''}
 
+        </div>
       </div>
     )
   }

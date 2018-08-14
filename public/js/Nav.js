@@ -4,11 +4,11 @@ class Nav extends React.Component {
       <nav>
         <ul className="nav-header">
           <div className="attractions-header">
-            <li>UNUSUAL ATTRACTIONS</li>
+            <li onClick={()=>this.props.toggleHome()}>UNUSUAL ATTRACTIONS</li>
             <div className="dropdown attractions-menu">
               <ul>
-                <li>view all</li>
-                <li>submit a new attraction</li>
+                <li onClick={()=>this.props.toggleHome()}>view all</li>
+                <li onClick={()=>this.props.toggleState("addAttractionIsVisible", "attractionListIsVisible")}>submit a new attraction</li>
               </ul>
             </div>
           </div>

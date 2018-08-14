@@ -50,6 +50,9 @@ ul {
 li {
   cursor: pointer;
 }
+.home-link {
+  cursor: pointer;
+}
 .nav-header {
   width: 100%;
   list-style-type: none;
@@ -102,7 +105,7 @@ li {
 }
 .attractions-container {
   background: #EFEADD;
-  width: 80%;
+  width: 90%;
   // height: 100%;
   margin: 0px auto;
   padding: 0px 50px;
@@ -118,29 +121,24 @@ li {
   display: inline-flex;
   align-items: baseline;
   flex-wrap: wrap;
-  padding: 12px;
 
 }
 .attraction-div {
-
+  width: 25%;
+  margin: 10px;
 }
 .attraction-div img {
   cursor: pointer;
   height: 200px;
-  width: 350px;
+  width: 290px;
   object-fit: cover;
   object-position: center;
 }
 .attraction-div h3 {
-position: absolute;
-z-index: 2;
 display: block;
 padding: 0 16px 16px;
-position: absolute;
-left: 0;
-right: 0;
-// bottom: 0;
+margin: 0;
+color: #000000;
 font-size: 20px;
 line-height: 24px;
-color: #fff;
 }
