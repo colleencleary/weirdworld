@@ -6,8 +6,7 @@ class Attraction
     DB = PG.connect(host: "localhost", port: 5432, dbname: 'weirdworld_development')
   end
 
-  attr_reader :id, :name, :description, :submitted_by, :image, :city, :country, :website, :rating
-  # , :tags, :comments
+  attr_reader :id, :name, :description, :submitted_by, :image, :city, :country, :website, :rating, :tags, :comments
 
   # initialize options hash
 def initialize(opts = {})
@@ -20,12 +19,12 @@ def initialize(opts = {})
     @country = opts["country"]
     @website = opts["website"]
     @rating = opts["rating"]
-    # if opts["tags"]
-    #   @tags = opts["tags"]
-    # end
-    # if opts["comments"]
-    #   @comments = opts["comments"]
-    # end
+    if opts["tags"]
+      @tags = opts["tags"]
+    end
+    if opts["comments"]
+      @comments = opts["comments"]
+    end
 end
 
   # Get All
@@ -68,19 +67,19 @@ end
             })
           )
         end
-        # if result["tags_id"]
-        #   attractions.last.tags.push(
-        #     result["tag_term"]
-        #   )
-        # end
-        # if result["comment_id"]
-        #   attractions.last.comments.push(
-        #     {
-        #       "comment" => result["comment_content"],
-        #       "commented_by" => result["commenter"]
-        #     }
-        # ).uniq!
-        # end
+        if result["tags_id"]
+          attractions.last.tags.push(
+            result["tag_term"]
+          )
+        end
+        if result["comment_id"]
+          attractions.last.comments.push(
+            {
+              "content" => result["comment_content"],
+              "commented_by" => result["commenter"]
+            }
+        ).uniq!
+        end
       end
       return attractions
     end
@@ -121,24 +120,24 @@ end
             "submitted_by" => result["submitted_by"],
             "image" => result["image"],
             "description" => result["description"],
-            # "tags" => [],
-            # "comments" => []
+            "tags" => [],
+            "comments" => []
             })
           )
         end
-        # if result["tags_id"]
-        #   attractions.last.tags.push(
-        #     result["tag_term"]
-        #   )
-        # end
-        # if result["comment_id"]
-        #   attractions.last.comments.push(
-        #     {
-        #       "comment" => result["comment_content"],
-        #       "commented_by" => result["commenter"]
-        #     }
-        # ).uniq!
-        # end
+        if result["tags_id"]
+          attractions.last.tags.push(
+            result["tag_term"]
+          )
+        end
+        if result["comment_id"]
+          attractions.last.comments.push(
+            {
+              "content" => result["comment_content"],
+              "commented_by" => result["commenter"]
+            }
+        ).uniq!
+        end
       end
       return attractions
     end
@@ -147,9 +146,9 @@ end
   def self.create(opts)
     results = DB.exec(
       <<-SQL
-      INSERT INTO attractions (name, description, submitted_by, image, city, country, website)
-      VALUES ('#{opts["name"]}', '#{opts["description"]}', '#{opts["submitted_by"]}', '#{opts["image"]}', '#{opts["city"]}', '#{opts["country"]}', '#{opts["website"]}')
-      RETURNING id, name, description, submitted_by, image, city, country, website;
+      INSERT INTO attractions (name, description, submitted_by, image, city, country, website, tags, rating)
+      VALUES ('#{opts["name"]}', '#{opts["description"]}', '#{opts["submitted_by"]}', '#{opts["image"]}', '#{opts["city"]}', '#{opts["country"]}', '#{opts["website"]}', #{opts["tags"]}, '#{opts["rating"]}' )
+      RETURNING id, name, description, submitted_by, image, city, country, website, tags, rating;
       SQL
     )
 
@@ -165,9 +164,9 @@ end
     results = DB.exec(
       <<-SQL
       UPDATE attractions
-      SET name ='#{opts["name"]}', description='#{opts["description"]}', submitted_by='#{opts["submitted_by"]}', image='#{opts["image"]}', city= '#{opts["city"]}', country= '#{opts["country"]}', website= '#{opts["website"]}'
+      SET name ='#{opts["name"]}', description='#{opts["description"]}', submitted_by='#{opts["submitted_by"]}', image='#{opts["image"]}', city= '#{opts["city"]}', country= '#{opts["country"]}', website= '#{opts["website"]}', tags=#{opts["tags"]}, rating='#{opts["rating"]}'
       WHERE id = #{id}
-      RETURNING id, name, description, submitted_by, image, city, country, website;
+      RETURNING id, name, description, submitted_by, image, city, country, website, tags, rating;
       SQL
     )
   end

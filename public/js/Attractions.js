@@ -165,14 +165,9 @@ handleCreate (person) {
           <Attraction
             toggleState={this.toggleState}
             attraction={this.state.attraction}
+            editAttractionIsVisible={this.state.editAttractionIsVisible}
             handleSubmit = {this.updateAttraction}
           /> : ''}
-          { this.state.editAttractionIsVisible ?
-            <Attraction
-              toggleState={this.toggleState}
-              attraction={this.state.attraction}
-              handleSubmit = {this.updateAttraction}
-            /> : ''}
 
       </div>
       <Footer />

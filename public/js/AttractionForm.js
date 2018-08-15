@@ -85,8 +85,10 @@ class AttractionForm extends React.Component {
             <input type='text' id='website' onChange={this.handleChange} value={this.state.website}/>
             <br/>
 
-            <input type='submit' value="Submit" />
-                <button onClick={()=> this.props.toggleState("attractionListIsVisible", "addAttractionIsVisible")} class="cancel-form">Cancel</button>
+            <div className="button-container">
+              <input type='submit' value="Submit" />
+              <button onClick={()=> this.props.toggleState("attractionListIsVisible", "addAttractionIsVisible")} class="cancel-form">Cancel</button>
+            </div>
         </form>
 
 
