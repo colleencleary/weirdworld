@@ -147,7 +147,7 @@ end
     results = DB.exec(
       <<-SQL
       INSERT INTO attractions (name, description, submitted_by, image, city, country, website, tags)
-      VALUES ('#{opts["name"]}', '#{opts["description"]}', '#{opts["submitted_by"]}', '#{opts["image"]}', '#{opts["city"]}', '#{opts["country"]}', '#{opts["website"]}', '#{opts["tags"]}' )
+      VALUES ('#{opts["name"]}', '#{opts["description"]}', '#{opts["submitted_by"]}', '#{opts["image"]}', '#{opts["city"]}', '#{opts["country"]}', '#{opts["website"]}', ARRAY#{opts["tags"]} )
       RETURNING id, name, description, submitted_by, image, city, country, website, tags;
       SQL
     )

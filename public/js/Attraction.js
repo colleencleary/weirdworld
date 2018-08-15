@@ -56,7 +56,8 @@ class Attraction extends React.Component {
           <div className="modal-container">
             <div className="edit-modal">
               <div className="modal-form">
-               <AttractionForm attraction={this.props.attraction} handleSubmit={this.props.handleSubmit}/>
+               <AttractionForm attraction={this.props.attraction} handleSubmit={this.props.handleSubmit}
+               tags={this.props.tags}/>
                <p className="exit-button" onClick={()=>{this.props.toggleState('editAttractionIsVisible', '')}}>X</p>
               </div>
 

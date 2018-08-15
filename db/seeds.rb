@@ -30,7 +30,7 @@ INSERT INTO comments (content, username, attraction_id) VALUES ('They got a lot 
 CREATE TABLE tags(id SERIAL, term VARCHAR(25));
 
 
-INSERT INTO tags (term) VALUES ('burlesque');
+INSERT INTO tags (term) VALUES ('adults-only');
 INSERT INTO tags (term) VALUES ('theatre');
 INSERT INTO tags (term) VALUES ('music');
 INSERT INTO tags (term) VALUES ('creepy');

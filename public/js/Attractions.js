@@ -47,7 +47,20 @@ class Attractions extends React.Component {
 //Handle Create
 handleCreate (attraction) {
   console.log(attraction);
+  // let newTags = '{'
+  // for (var i = 0; i < attraction.tags.length; i++) {
+  //   newTags += attraction.tags[i] + ', '
+  // }
+  // // newTags -= ', '
+  // newTags += '}'
+  // console.log(attraction.tags);
+  // console.log(attraction)
+  // // attraction.tags = `"${newTags}"`;
+  // console.log(attraction.tags);
+  // console.log(attraction)
+
    const updatedAttractions = this.state.attractions
+   // attraction["tags"]= ARRAY + attraction["tags"]
    updatedAttractions.unshift(attraction)
    this.setState({attractions: updatedAttractions})
 
@@ -56,10 +69,16 @@ handleCreate (attraction) {
 
 //Handle Create Submit
   handleCreateSubmit(attraction){
-    // for (var i = 0; i < attractions.tags.length; i++) {
-    //   attractions.tags[i]
+    console.log('gets here');
+    // let newTags = '{'
+    // for (var i = 0; i < attraction.tags.length; i++) {
+    //   newTags += attraction.tags[i] + ', '
     // }
-    console.log('####', attraction);
+    // // newTags -= ', '
+    // newTags += '}'
+    // attraction = JSON.parse({attraction});
+
+
     fetch('/attractions', {
       body: JSON.stringify(attraction),
       method: 'POST',
@@ -69,9 +88,12 @@ handleCreate (attraction) {
       }
     })
       .then(createdAttraction => {
+        // console.log('created: ', createdAttraction);
+        console.log(createdAttraction.json());
         return createdAttraction.json()
       })
       .then(jsonAttraction => {
+        // console.log('json: ', jsonAttraction);
         this.handleCreate(jsonAttraction)
         this.toggleState('addAttractionIsVisible', 'attractionListIsVisible')
       }).catch(error => console.log(error))
@@ -121,6 +143,7 @@ handleCreate (attraction) {
   //GET ONE
     getAttraction(attraction){
       this.setState({attraction: attraction})
+      console.log(attraction.tags);
     }
 
   //Get ALL ATTRACTIONS
@@ -200,6 +223,7 @@ handleCreate (attraction) {
             handleSubmit = {this.updateAttraction}
             deleteAttraction={this.deleteAttraction}
             toggleHome ={this.toggleHome}
+            tags={this.state.tags}
           /> : ''}
 
       </div>
