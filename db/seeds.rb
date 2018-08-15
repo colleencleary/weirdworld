@@ -19,9 +19,9 @@ INSERT INTO attractions (name, description, submitted_by, image, city, country, 
 
 
 
-CREATE TABLE comments (id SERIAL, content TEXT, username VARCHAR(25), attraction_id INT);
+CREATE TABLE comments (id SERIAL, content TEXT, username VARCHAR(25), attraction_id INT, date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP);
 
-INSERT INTO comments (content, username, attraction_id) VALUES ('Coney Island was more fun than I could have thought!', 'acroak', 1);
+INSERT INTO comments (content, username, attraction_id, date) VALUES ('Coney Island was more fun than I could have thought!', 'acroak', 1);
 
 INSERT INTO comments (content, username, attraction_id) VALUES ('Not only does coney island have a lot of venues, they have a mermaid parade!', 'merBAE', 1);
 

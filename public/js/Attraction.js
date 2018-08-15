@@ -39,7 +39,17 @@ class Attraction extends React.Component {
               )
             })}
 
-
+            <div className="comment-form">
+              <form>
+                <h4>Add A Comment</h4>
+                Your Name: <input type="text" />
+                <br />
+                <br />
+                <textarea rows="4" ></textarea>
+                <br />
+                <input type="submit" className= "comment-submit"/>
+              </form>
+            </div>
           </div>
 
           { this.props.editAttractionIsVisible ?
