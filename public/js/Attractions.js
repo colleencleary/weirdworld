@@ -16,6 +16,7 @@ class Attractions extends React.Component {
     this.updateAttraction = this.updateAttraction.bind(this)
     this.handleCreate = this.handleCreate.bind(this)
     this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
+    this.toggleAddForm = this.toggleAddForm.bind(this)
 
   }
 
@@ -103,8 +104,9 @@ handleCreate (person) {
             ...this.state.attractions.slice(0, index),
             ...this.state.attractions.slice(index + 1)
           ]
-        })
+        }) //ends state
       })
+      .then( location.reload())
     }
 
 
@@ -141,12 +143,21 @@ handleCreate (person) {
       })
     }
 
+    toggleAddForm(){
+      this.setState({
+        ['attractionListIsVisible']: false,
+        ['addAttractionIsVisible']: true,
+        ['attractionIsVisible']: false,
+        ['editAttractionIsVisible']: false
+      })
+    }
+
   render(){
     //console.log('^^^^^',this.state.attractions);
     //console.log('@@@@@',this.state.attraction);
     return (
       <div>
-      <Header toggleState={this.toggleState} toggleHome={this.toggleHome}/>
+      <Header toggleState={this.toggleState} toggleHome={this.toggleHome} toggleAddForm={this.toggleAddForm}/>
       <div className="attractions-container">
         { this.state.attractionListIsVisible ?
           <AttractionList
@@ -167,6 +178,8 @@ handleCreate (person) {
             attraction={this.state.attraction}
             editAttractionIsVisible={this.state.editAttractionIsVisible}
             handleSubmit = {this.updateAttraction}
+            deleteAttraction={this.deleteAttraction}
+            toggleHome ={this.toggleHome}
           /> : ''}
 
       </div>

@@ -55,8 +55,17 @@ class Attraction extends React.Component {
           { this.props.editAttractionIsVisible ?
           <div className="modal-container">
             <div className="edit-modal">
+              <div className="modal-form">
                <AttractionForm attraction={this.props.attraction} handleSubmit={this.props.handleSubmit}/>
                <p className="exit-button" onClick={()=>{this.props.toggleState('editAttractionIsVisible', '')}}>X</p>
+              </div>
+
+              <div className= "button-container">
+              <button className="attraction-delete"
+                     onClick={()=>
+                        {this.props.deleteAttraction(this.props.attraction,this.props.attraction.id)}}
+               >Delete</button>
+              </div>
             </div>
           </div> : ''}
       </div>
