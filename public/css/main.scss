@@ -283,7 +283,6 @@ span {
   background-color: #D3C7A2;
   width: auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   border-radius: 2px;
   padding: 0 20px;
@@ -298,6 +297,7 @@ span {
   top: 0;
   left: 0;
   z-index: 1;
+  overflow: auto;
 }
 .exit-button {
   color: red;
@@ -336,7 +336,7 @@ span {
   font-family: 'Sawarabi Gothic', sans-serif;
   text-align: left;
 }
-.comment-submit{
+.comment-submit {
   border: none;
   padding: 8px 15px 8px 15px;
   background: #DD8642;
@@ -351,39 +351,22 @@ span {
   -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
-
-textarea {
-  resize: none;
-  width: 60%;
+fieldset {
+  width: auto;
+  overflow: visible;
+  width: 500px;
+}
+.inline-tag {
+  display: inline-flex;
+  justify-content: flex-start;
 }
 
-.modal-form{
-  display: flex;
-  justify-content: center;
-}
 
 
-.attraction-delete {
-  border: none;
-  padding: 8px 15px 8px 15px;
-  background: #F24333;
-  color: #fff;
-  border: 1px solid #F24333;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  margin: 10px;
-}
 
-.attraction-delete:hover {
-  background: #fff;
-  color: #F24333;
-  border: 1px solid #F24333;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 
-}
+
+
 
 
 

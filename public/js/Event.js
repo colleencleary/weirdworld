@@ -2,7 +2,7 @@ class Event extends React.Component {
   render(){
       //console.log('*****',this.props.event);
     //   let comments = this.props.event.comments
-    // return (
+    return (
       <div>
         <div class="background">
 
@@ -17,15 +17,9 @@ class Event extends React.Component {
           <p class="title">{this.props.event.description}</p>
 
         </div>
-
-          // <div>
-          //    <p class="title">Comments:{JSON.stringify(comments)}</p>
-          // </div>
           <div>
             <EventForm event={this.props.event} handleSubmit={this.props.handleSubmit}/>
           </div>
-
-          // <Comments />
       </div>
     )
   }

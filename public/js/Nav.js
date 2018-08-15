@@ -14,10 +14,10 @@ class Nav extends React.Component {
           </div>
 
           <div className="events-header">
-            <li>WEIRD EVENTS</li>
+            <li onClick={()=>this.props.toggleEvents()}>WEIRD EVENTS</li>
             <div className="dropdown-container">
               <ul className="dropdown events-menu">
-                <li>view all</li>
+                <li onClick={()=>this.props.toggleEvents()}>view all</li>
                 <li>submit a new event</li>
               </ul>
             </div>

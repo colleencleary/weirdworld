@@ -6,6 +6,7 @@ class Attractions extends React.Component {
       addAttractionIsVisible: false,
       attractionIsVisible: false,
       editAttractionIsVisible: false,
+      eventsIsVisible: false,
       attractions: [],
       attraction: {},
       tags: []
@@ -18,6 +19,7 @@ class Attractions extends React.Component {
     this.handleCreate = this.handleCreate.bind(this)
     this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
     this.toggleAddForm = this.toggleAddForm.bind(this)
+    this.toggleEvents = this.toggleEvents.bind(this)
 
   }
 
@@ -181,7 +183,8 @@ handleCreate (attraction) {
         ['attractionListIsVisible']: true,
         ['addAttractionIsVisible']: false,
         ['attractionIsVisible']: false,
-        ['editAttractionIsVisible']: false
+        ['editAttractionIsVisible']: false,
+        ['eventsIsVisible']: false,
       })
     }
 
@@ -189,6 +192,16 @@ handleCreate (attraction) {
       this.setState({
         ['attractionListIsVisible']: false,
         ['addAttractionIsVisible']: true,
+        ['attractionIsVisible']: false,
+        ['editAttractionIsVisible']: false,
+        ['eventsIsVisible']: false
+      })
+    }
+    toggleEvents(){
+      this.setState({
+        ['eventsIsVisible']: true,
+        ['attractionListIsVisible']: false,
+        ['addAttractionIsVisible']: false,
         ['attractionIsVisible']: false,
         ['editAttractionIsVisible']: false
       })
@@ -199,7 +212,8 @@ handleCreate (attraction) {
     //console.log('@@@@@',this.state.attraction);
     return (
       <div>
-      <Header toggleState={this.toggleState} toggleHome={this.toggleHome} toggleAddForm={this.toggleAddForm}/>
+      <Header toggleState={this.toggleState} toggleHome={this.toggleHome} toggleAddForm={this.toggleAddForm}
+      toggleEvents={this.toggleEvents}/>
       <div className="attractions-container">
         { this.state.attractionListIsVisible ?
           <AttractionList
@@ -226,6 +240,8 @@ handleCreate (attraction) {
             tags={this.state.tags}
           /> : ''}
 
+          { this.state.eventsIsVisible ?
+            <Events /> : ''}
       </div>
       <Footer />
       </div>

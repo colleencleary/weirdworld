@@ -146,7 +146,6 @@ handleCreate (person) {
     //console.log('@@@@@',this.state.event);
     return (
       <div>
-      <Header toggleState={this.toggleState} toggleHome={this.toggleHome}/>
       <div className="events-container">
         { this.state.eventListIsVisible ?
           <EventList
