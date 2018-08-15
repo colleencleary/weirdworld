@@ -28,4 +28,13 @@ get '/tags/:id', to: 'tags#show'
 post '/tags', to: 'tags#create'
 delete '/tags/:id', to: 'tags#delete'
 put '/tags/:id', to: 'tags#update'
+
+# =================================================
+#             ROUTES FOR EVENTS MODEL
+# =================================================
+get '/events', to: 'events#index'
+get '/events/:id', to: 'events#show'
+post '/events', to: 'events#create'
+delete '/events/:id', to: 'events#delete'
+put '/events/:id', to: 'events#update'
 end
