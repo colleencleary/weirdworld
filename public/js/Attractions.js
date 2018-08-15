@@ -56,9 +56,10 @@ handleCreate (attraction) {
 
 //Handle Create Submit
   handleCreateSubmit(attraction){
-    for (var i = 0; i < attractions.tags.length; i++) {
-      attractions.tags[i]
-    }
+    // for (var i = 0; i < attractions.tags.length; i++) {
+    //   attractions.tags[i]
+    // }
+    console.log('####', attraction);
     fetch('/attractions', {
       body: JSON.stringify(attraction),
       method: 'POST',
