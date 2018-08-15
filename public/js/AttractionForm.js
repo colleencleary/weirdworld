@@ -40,6 +40,7 @@ class AttractionForm extends React.Component {
   }
 
   render(){
+
     return (
       <div className="form-group">
         <form onSubmit={this.handleSubmit}>
@@ -84,6 +85,23 @@ class AttractionForm extends React.Component {
           </label>
             <input type='text' id='website' onChange={this.handleChange} value={this.state.website}/>
             <br/>
+
+          <div>
+            <fieldset>
+              <legend>
+                <span>Tags</span>
+              </legend>
+
+              {this.props.tags.map((tag,index) => {
+                return(
+                  <div className='inline-tag'>
+                    <input type="checkbox" value={index} id='tags' />
+                    <label for='tags'>{tag.term}</label>
+                  </div>
+                )}
+              )}
+            </fieldset>
+          </div>
 
             <div className="button-container">
               <input type='submit' value="Submit" />
