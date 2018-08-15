@@ -355,10 +355,12 @@ fieldset {
   width: auto;
   overflow: visible;
   width: 500px;
+  margin: 10px;
 }
 .inline-tag {
   display: inline-flex;
   justify-content: flex-start;
+  width: 25%;
 }
 
 
