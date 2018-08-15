@@ -45,15 +45,20 @@ class Attractions extends React.Component {
     }
 
 //Handle Create
-handleCreate (person) {
+handleCreate (attraction) {
+  console.log(attraction);
    const updatedAttractions = this.state.attractions
    updatedAttractions.unshift(attraction)
    this.setState({attractions: updatedAttractions})
+
  }
 
 
 //Handle Create Submit
   handleCreateSubmit(attraction){
+    for (var i = 0; i < attractions.tags.length; i++) {
+      attractions.tags[i]
+    }
     fetch('/attractions', {
       body: JSON.stringify(attraction),
       method: 'POST',
