@@ -19,9 +19,9 @@ INSERT INTO attractions (name, description, submitted_by, image, city, country, 
 
 
 
-CREATE TABLE comments (id SERIAL, content TEXT, username VARCHAR(25), attraction_id INT);
+CREATE TABLE comments (id SERIAL, content TEXT, username VARCHAR(25), attraction_id INT, date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP);
 
-INSERT INTO comments (content, username, attraction_id) VALUES ('Coney Island was more fun than I could have thought!', 'acroak', 1);
+INSERT INTO comments (content, username, attraction_id, date) VALUES ('Coney Island was more fun than I could have thought!', 'acroak', 1);
 
 INSERT INTO comments (content, username, attraction_id) VALUES ('Not only does coney island have a lot of venues, they have a mermaid parade!', 'merBAE', 1);
 
@@ -29,41 +29,16 @@ INSERT INTO comments (content, username, attraction_id) VALUES ('They got a lot 
 
 CREATE TABLE tags(id SERIAL, term VARCHAR(25));
 
-INSERT INTO tags (term) VALUES ('freakshow');
-INSERT INTO tags (term) VALUES ('burlesque');
+
+INSERT INTO tags (term) VALUES ('adults-only');
 INSERT INTO tags (term) VALUES ('theatre');
-INSERT INTO tags (term) VALUES ('dance');
-INSERT INTO tags (term) VALUES ('comedy');
 INSERT INTO tags (term) VALUES ('music');
-INSERT INTO tags (term) VALUES ('scary');
 INSERT INTO tags (term) VALUES ('creepy');
-INSERT INTO tags (term) VALUES ('murder');
-INSERT INTO tags (term) VALUES ('fun');
-INSERT INTO tags (term) VALUES ('death');
-INSERT INTO tags (term) VALUES ('mermaids');
 INSERT INTO tags (term) VALUES ('comics');
-INSERT INTO tags (term) VALUES ('graveyard');
-INSERT INTO tags (term) VALUES ('crazy');
-INSERT INTO tags (term) VALUES ('wild');
 INSERT INTO tags (term) VALUES ('boardwalk');
-INSERT INTO tags (term) VALUES ('nightlife');
-INSERT INTO tags (term) VALUES ('bar');
-INSERT INTO tags (term) VALUES ('careful after dark');
-INSERT INTO tags (term) VALUES ('carnival');
 INSERT INTO tags (term) VALUES ('adventure');
 INSERT INTO tags (term) VALUES ('tour');
-INSERT INTO tags (term) VALUES ('exciting');
 INSERT INTO tags (term) VALUES ('themed');
-INSERT INTO tags (term) VALUES ('limited');
-INSERT INTO tags (term) VALUES ('gothic');
-INSERT INTO tags (term) VALUES ('exclusive');
 INSERT INTO tags (term) VALUES ('food');
-INSERT INTO tags (term) VALUES ('beer');
-INSERT INTO tags (term) VALUES ('mixed drinks');
 INSERT INTO tags (term) VALUES ('alcohol');
-INSERT INTO tags (term) VALUES ('kid friendly');
-INSERT INTO tags (term) VALUES ('summer');
-INSERT INTO tags (term) VALUES ('indoors');
-INSERT INTO tags (term) VALUES ('outdoors');
-INSERT INTO tags (term) VALUES ('costume');
-INSERT INTO tags (term) VALUES ('yolo');
+INSERT INTO tags (term) VALUES ('kid-friendly');

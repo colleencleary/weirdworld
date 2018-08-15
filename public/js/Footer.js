@@ -1,4 +1,4 @@
-class Footer extends React.Components {
+class Footer extends React.Component {
   render(){
     return(
       <footer>

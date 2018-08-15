@@ -8,7 +8,7 @@ class Nav extends React.Component {
             <div className="dropdown attractions-menu">
               <ul>
                 <li onClick={()=>this.props.toggleHome()}>view all</li>
-                <li onClick={()=>this.props.toggleState("addAttractionIsVisible", "attractionListIsVisible")}>submit a new attraction</li>
+                <li onClick={()=>this.props.toggleAddForm()}>submit a new attraction</li>
               </ul>
             </div>
           </div>
