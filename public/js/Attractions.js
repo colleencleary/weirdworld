@@ -7,7 +7,8 @@ class Attractions extends React.Component {
       attractionIsVisible: false,
       editAttractionIsVisible: false,
       attractions: [],
-      attraction: {}
+      attraction: {},
+      tags: []
     }
     this.toggleState = this.toggleState.bind(this)
     this.toggleHome = this.toggleHome.bind(this)
@@ -23,6 +24,7 @@ class Attractions extends React.Component {
 //Did Mount
   componentDidMount(){
     this.getAttractions();
+    this.getTags();
   }
 
   //DELETE
@@ -43,15 +45,20 @@ class Attractions extends React.Component {
     }
 
 //Handle Create
-handleCreate (person) {
+handleCreate (attraction) {
+  console.log(attraction);
    const updatedAttractions = this.state.attractions
    updatedAttractions.unshift(attraction)
    this.setState({attractions: updatedAttractions})
+
  }
 
 
 //Handle Create Submit
   handleCreateSubmit(attraction){
+    for (var i = 0; i < attractions.tags.length; i++) {
+      attractions.tags[i]
+    }
     fetch('/attractions', {
       body: JSON.stringify(attraction),
       method: 'POST',
@@ -115,13 +122,24 @@ handleCreate (person) {
       this.setState({attraction: attraction})
     }
 
-  //Get ALL
+  //Get ALL ATTRACTIONS
     getAttractions(){
       fetch('/attractions')
         .then(response => response.json())
         .then(data => {
           this.setState({
             attractions: data
+          })
+        }).catch(error => console.log(error))
+    }
+
+  //Get ALL TAGS
+    getTags(){
+      fetch('/tags')
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            tags: data
           })
         }).catch(error => console.log(error))
     }
@@ -171,6 +189,7 @@ handleCreate (person) {
             toggleState={this.toggleState}
             handleCreate = {this.handleCreate}
             handleSubmit = {this.handleCreateSubmit}
+            tags={this.state.tags}
           /> : ''}
         { this.state.attractionIsVisible ?
           <Attraction
