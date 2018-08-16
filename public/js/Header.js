@@ -6,7 +6,8 @@ class Header extends React.Component {
           <h1>Weird World</h1>
           <h2>for the unconventional traveler</h2>
         </div>
-        <Nav toggleState={this.props.toggleState} toggleHome={this.props.toggleHome}/>
+        <Nav toggleState={this.props.toggleState} toggleHome={this.props.toggleHome} toggleAddForm={this.props.toggleAddForm}
+        toggleEvents={this.props.toggleEvents}/>
       </header>
     )
   }

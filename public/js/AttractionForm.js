@@ -8,7 +8,9 @@ class AttractionForm extends React.Component {
       image: '',
       city: '',
       country: '',
-      website: ''
+      website: '',
+      tags: [],
+      checkboxState: true
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,13 +33,40 @@ class AttractionForm extends React.Component {
   }
   handleChange(event){
     this.setState({[event.target.id]: event.target.value})
-    console.log(this.state[event.target.id])
+    // console.log(this.state[event.target.id])
   }
 
   handleSubmit(event){
     // event.preventDefault()
     this.props.handleSubmit(this.state)
   }
+
+  toggle(event) {
+    this.setState({
+      checkboxState: !this.state.checkboxState
+    });
+  }
+
+  onChange(e) {
+    // current array of tags
+    const tags = this.state.tags
+    let index
+
+    // check if the check box is checked or unchecked
+    if (e.target.checked) {
+      // add the numerical value of the checkbox to tags array
+      tags.push(+e.target.value)
+    } else {
+      // or remove the value from the unchecked checkbox from the array
+      index = tags.indexOf(+e.target.value)
+      tags.splice(index, 1)
+    }
+
+    // update the state with the new array of tags
+    this.setState({ tags: tags })
+    console.log(this.state.tags);
+  }
+
 
   render(){
     return (
@@ -85,10 +114,34 @@ class AttractionForm extends React.Component {
             <input type='text' id='website' onChange={this.handleChange} value={this.state.website}/>
             <br/>
 
-            <input type='submit' value="Submit" />
-                <button onClick={()=> this.props.toggleState("attractionListIsVisible", "addAttractionIsVisible")} class="cancel-form">Cancel</button>
-        </form>
+          <div>
+            <fieldset>
+              <legend>
+                <span>Tags</span>
+              </legend>
 
+              {this.props.tags.map((tag,index) => {
+                return(
+                  <div className='inline-tag'>
+                    <input
+                      type="checkbox"
+                      value={tag.id}
+                      name={tag.term}
+                      id='tags'
+                      onClick={this.toggle.bind(this)} onChange={this.onChange.bind(this)}
+                    />
+                    <label for='tags'>{tag.term}</label>
+                  </div>
+                )}
+              )}
+            </fieldset>
+          </div>
+
+            <div className="button-container">
+              <input type='submit' value="Submit" />
+              <button onClick={()=> this.props.toggleState("attractionListIsVisible", "addAttractionIsVisible")} class="cancel-form">Cancel</button>
+            </div>
+        </form>
 
       </div>
     )

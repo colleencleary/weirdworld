@@ -8,16 +8,16 @@ class Nav extends React.Component {
             <div className="dropdown attractions-menu">
               <ul>
                 <li onClick={()=>this.props.toggleHome()}>view all</li>
-                <li onClick={()=>this.props.toggleState("addAttractionIsVisible", "attractionListIsVisible")}>submit a new attraction</li>
+                <li onClick={()=>this.props.toggleAddForm()}>submit a new attraction</li>
               </ul>
             </div>
           </div>
 
           <div className="events-header">
-            <li>WEIRD EVENTS</li>
+            <li onClick={()=>this.props.toggleEvents()}>WEIRD EVENTS</li>
             <div className="dropdown-container">
               <ul className="dropdown events-menu">
-                <li>view all</li>
+                <li onClick={()=>this.props.toggleEvents()}>view all</li>
                 <li>submit a new event</li>
               </ul>
             </div>
