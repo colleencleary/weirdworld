@@ -6,6 +6,18 @@ class Event
     DB = PG.connect(host: "localhost", port: 5432, dbname: 'weirdworld_development')
   end
 
+  attr_reader :id, :name, :description, :image, :city, :country, :website
+  # initialize options hash
+  def initialize(opts = {})
+    @id = opts["id"].to_i
+    @name = opts["name"]
+    @description = opts["description"]
+    @image = opts["image"]
+    @city = opts["city"]
+    @country = opts["country"]
+    @website = opts["website"]
+  end
+
 # Get All
   def self.all
      results = DB.exec("SELECT * FROM events")
