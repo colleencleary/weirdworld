@@ -36,7 +36,7 @@ class Attraction extends React.Component {
 
           <div className="comments-container">
             <h2 class="subtitle">Comments</h2>
-            {/*{this.props.attraction.comments.map((comment, index)=>{
+            {this.props.attraction.comments.map((comment, index)=>{
               return (
                 <div className="comment-line">
                   <div className="narrow-column">
@@ -49,7 +49,9 @@ class Attraction extends React.Component {
               )
             })}
 
-            <div className="comment-form">
+              <Comments attraction={this.props.attraction} />
+
+            {/*<div className="comment-form">
               <form>
                 <h4>Add A Comment</h4>
                 Your Name: <input type="text" />
@@ -62,7 +64,7 @@ class Attraction extends React.Component {
             </div> */}
 
           </div>
-          <Comments attraction={this.props.attraction} />
+
 
           { this.props.editAttractionIsVisible ?
           <div className="modal-container">

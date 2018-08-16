@@ -9,7 +9,7 @@ class Event extends React.Component {
 
           <h2 className="subtitle">{this.props.event.city}, {this.props.event.country}</h2>
 
-          <p className="title"><a target="_blank" href={this.props.event.website}> 
+          <p className="title"><a target="_blank" href={this.props.event.website}></a></p>
           <p className="title">submitted by: {this.props.event.submitted_by}</p>
 
           <img src={this.props.event.image} alt={this.props.event.name} />

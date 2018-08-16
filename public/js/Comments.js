@@ -44,12 +44,12 @@ class Comments extends React.Component {
       }
     })
       .then(createdComment => {
-        console.log('created: ', createdComment);
+        console.log(createdComment.json());
         return createdComment.json()
       })
       .then(jsonComment => {
         this.handleCreate(jsonComment)
-        this.toggleState('addCommentIsVisible', 'commentListIsVisible')
+        //this.toggleState('addCommentIsVisible', 'commentListIsVisible')
       }).catch(error => console.log(error))
   }
 //Handle Update Submit
