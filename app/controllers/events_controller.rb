@@ -17,8 +17,4 @@ skip_before_action :verify_authenticity_token
     render json: Event.delete(params["id"])
   end
 
-  def update
-    render json: Event.update(params["id"], params["event"])
-  end
-
-end #end Companies Controller
+end #end Event Controller
