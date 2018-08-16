@@ -1,4 +1,4 @@
-class Comment
+comment.rb  class Comment
   if(ENV['DATABASE_URL'])
     uri = URI.parse(ENV['DATABASE_URL'])
     DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
@@ -36,10 +36,10 @@ class Comment
       if result["attraction_id"] != last_attraction_id
         comments.push(
           {
-            "id"=> result["id"],
+            "id"=> result["id"].to_i,
             "content" => result["content"],
-            "submitted_by" => result["submitted_by"],
-            "attraction_id" => result["attraction_id"],
+            "username" => result["username"],
+            "attraction_id" => result["attraction_id"].to_i
           }
         )
         last_attraction_id = result["id"]
@@ -49,49 +49,59 @@ class Comment
   end
 
 # Get One by ID
+  # def self.find(id)
+  #   results = DB.exec(
+  #     <<-SQL
+  #     SELECT
+  #     comments.* ,
+  #     attractions.id as id_from_attraction,
+  #     attractions.name as attraction_name,
+  #     attractions.description as attraction_decription
+  #     FROM attractions
+  #     LEFT JOIN comments
+  #     ON comments.attraction_id = attractions.id
+  #     WHERE comments.attraction_id = #{id};
+  #     SQL
+  #   )
+  #   "id"=> result["id"],
+  #   "content" => result["content"],
+  #   "username" => result["username"],
+  #   "attraction_id" => result["attraction_id"]
+  # end
+  # Get One by ID
   def self.find(id)
     results = DB.exec(
-      # returns comments based on attraction id
-      # <<-SQL
-      # SELECT
-      # comments.* ,
-      # attractions.id as id_from_attraction,
-      # attractions.name as attraction_name,
-      # attractions.description as attraction_decription
-      # FROM attractions
-      # LEFT JOIN comments
-      # ON comments.attraction_id = attractions.id
-      # WHERE attractions.id = #{id};
-      # SQL
-
-      # Returns where id = comment id
-      # <<-SQL
-      # SELECT
-      # comments.* ,
-      # attractions.id as id_from_attraction,
-      # attractions.name as attraction_name,
-      # attractions.description as attraction_decription
-      # FROM attractions
-      # LEFT JOIN comments
-      # ON comments.attraction_id = attractions.id
-      # WHERE comments.id = #{id};
-      # SQL
-
-      # Returns where id is equal to comments.attraction_id
       <<-SQL
-      SELECT
-      comments.* ,
-      attractions.id as id_from_attraction,
-      attractions.name as attraction_name,
-      attractions.description as attraction_decription
-      FROM attractions
-      LEFT JOIN comments
-      ON comments.attraction_id = attractions.id
-      WHERE comments.attraction_id = #{id};
-      SQL
+        SELECT
+          comments.* ,
+          attractions.id as id_from_attraction,
+          attractions.name as attraction_name,
+          attractions.description as attraction_decription
+        FROM attractions
+        LEFT JOIN comments
+        ON comments.attraction_id = attractions.id
+        WHERE comments.attraction_id = #{id};
+        SQL
     )
 
-  end
+    comments = []
+    current_attraction_id = nil
+    results.each do |result|
+      if result["attraction_id"] != current_attraction_id
+        current_attraction_id = result["id"]
+        comments.push(
+          Comment.new({
+            "id"=> result["id"].to_i,
+            "content" => result["content"],
+            "username" => result["username"],
+            "attraction_id" => result["attraction_id"].to_i
+            })
+          )
+        end
+
+      end
+      return attractions
+    end
 
 # Post/ Create New
   def self.create(opts)

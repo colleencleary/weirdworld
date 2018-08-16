@@ -14,7 +14,7 @@ class Comments extends React.Component {
     this.deleteComment = this.deleteComment.bind(this)
     this.updateComment = this.updateComment.bind(this)
     this.handleCreate = this.handleCreate.bind(this)
-    this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
+    this.handleCreateCommentSubmit = this.handleCreateCommentSubmit.bind(this)
   }
 
 //Did Mount
@@ -22,32 +22,18 @@ class Comments extends React.Component {
     this.getComments();
   }
 
-//DELETE
-  deleteComment(comment, index){
-    //console.log('DELETE');
-    fetch('/comments/' + comment.id,
-    {
-      method: 'DELETE'
-    })
-    .then(data => {
-      this.setState({
-        comments: [
-          ...this.state.comments.slice(0, index),
-          ...this.state.comments.slice(index + 1)
-        ]
-      })
-    })
-  }
-
 //Handle Create
   handleCreate(comment){
     console.log('handle create');
-    console.log([comment, ...this.state.comments])
+    // console.log('handle create');
+    // console.log([comment, ...this.state.comments])
+    const updatedComments = this.state.comments
+    updatedComments.unshift(comment)
     this.setState({comments:[comment, ...this.state.comments]})
   }
 
 //Handle Create Submit
-  handleCreateSubmit(comment){
+  handleCreateCommentSubmit(comment){
     console.log('Create Submit Handled');
     fetch('/comments', {
       body: JSON.stringify(comment),
@@ -58,6 +44,7 @@ class Comments extends React.Component {
       }
     })
       .then(createdComment => {
+        console.log('created: ', createdComment);
         return createdComment.json()
       })
       .then(jsonComment => {
@@ -84,6 +71,23 @@ class Comments extends React.Component {
       this.toggleState('commentListIsVisible', 'commentIsVisible')
     })
     .catch(error => console.log(error))
+  }
+
+//DELETE
+  deleteComment(comment, index){
+    //console.log('DELETE');
+    fetch('/comments/' + comment.id,
+    {
+      method: 'DELETE'
+    })
+    .then(data => {
+      this.setState({
+        comments: [
+          ...this.state.comments.slice(0, index),
+          ...this.state.comments.slice(index + 1)
+        ]
+      })
+    })
   }
 
 //GET ONE
@@ -114,6 +118,8 @@ class Comments extends React.Component {
 
   render(){
     //console.log('^^^^^',this.state.comments);
+    console.log('Comment', this.state.comment);
+    console.log('commentS', this.state.comments);
     return (
       <div>
         <h2> comments </h2>
@@ -124,9 +130,10 @@ class Comments extends React.Component {
           : ''
         }
 
-          <CommentList
+         <CommentList
             toggleState={this.toggleState}
             comments={this.state.comments}
+            attraction={this.props.attraction}
             getComment={this.getComment}
             deleteComment={this.deleteComment}
           />
@@ -134,14 +141,17 @@ class Comments extends React.Component {
           <CommentForm
             toggleState={this.toggleState}
             handleCreate = {this.handleCreate}
-            handleSubmit = {this.handleCreateSubmit}
+            handleSubmit = {this.handleCreateCommentSubmit}
+            comment={this.state.comment}
+            attraction={this.props.attraction}
           />
 
-          <Comment
-            toggleState={this.toggleState}
-            comment={this.state.comment}
-            handleSubmit = {this.handleUpdateSubmit}
-          />
+        {/*  // <Comment
+          //   toggleState={this.toggleState}
+          //   comment={this.state.comment}
+          //   handleSubmit = {this.handleUpdateSubmit}
+          //   deleteAttraction={this.deleteAttraction}
+          // />*/}
 
       </div>
     )
