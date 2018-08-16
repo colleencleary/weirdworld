@@ -1,6 +1,6 @@
   ![[I’m an inline-style link](https://weirdworldtourism.herokuapp.com/)]()
 
-  
+
   PROJECT 4: Weird World - for the unconventional traveler
   VIEW WEIRD WORLD - https://weirdworldtourism.herokuapp.com/
 
@@ -24,9 +24,14 @@
   -As a user I can edit attractions(editing description, tags etc).
 
   UNSOLVED PROBLEMS -
+  -comments not posting through front end
+  -Itinerary
+  -events
+  -inconsistent attraction posting
 
   FUTURE ACHIEVEMENTS -
   -Users/Sessions
   -Google map API
   -Yelp review API
   -Itinerary
+  -About Contributors Page
