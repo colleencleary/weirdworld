@@ -1,3 +1,4 @@
+
 class Events extends React.Component {
   constructor(props){
     super(props)
@@ -5,17 +6,19 @@ class Events extends React.Component {
       eventListIsVisible: true,
       addEventIsVisible: false,
       eventIsVisible: false,
-      editEventIsVisible: false,
+      eventsIsVisible: false,
       events: [],
-      event: {}
+      event: {},
+      tags: []
     }
     this.toggleState = this.toggleState.bind(this)
     this.toggleHome = this.toggleHome.bind(this)
     this.getEvent = this.getEvent.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
-    this.updateEvent = this.updateEvent.bind(this)
     this.handleCreate = this.handleCreate.bind(this)
     this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
+    this.toggleAddForm = this.toggleAddForm.bind(this)
+    this.toggleEvents = this.toggleEvents.bind(this)
 
   }
 
@@ -42,15 +45,21 @@ class Events extends React.Component {
     }
 
 //Handle Create
-handleCreate (person) {
+handleCreate (event) {
+  console.log(event);
+
    const updatedEvents = this.state.events
+   // event["tags"]= ARRAY + event["tags"]
    updatedEvents.unshift(event)
    this.setState({events: updatedEvents})
+
  }
 
 
 //Handle Create Submit
   handleCreateSubmit(event){
+    console.log('gets here');
+
     fetch('/events', {
       body: JSON.stringify(event),
       method: 'POST',
@@ -60,35 +69,17 @@ handleCreate (person) {
       }
     })
       .then(createdEvent => {
+        // console.log('created: ', createdEvent);
+        console.log(createdEvent.json());
         return createdEvent.json()
       })
       .then(jsonEvent => {
+        // console.log('json: ', jsonEvent);
         this.handleCreate(jsonEvent)
         this.toggleState('addEventIsVisible', 'eventListIsVisible')
       }).catch(error => console.log(error))
   }
 
-
-//Handle Update Submit
-  updateEvent(event){
-    // console.log('Update Submit Handled');
-    fetch('/events/'+ event.id, {
-      body: JSON.stringify(event),
-      method: 'PUT',
-      headers: {
-        'Accept' : 'applications/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(updatedEvent =>{
-      return updatedEvent.json()
-    })
-    .then(jsonEvent => {
-      this.getEvent()
-      this.toggleState('eventListIsVisible', 'eventIsVisible')
-    })
-    .catch(error => console.log(error))
-  }
 
 //DELETE
     deleteEvent(event, index){
@@ -103,17 +94,19 @@ handleCreate (person) {
             ...this.state.events.slice(0, index),
             ...this.state.events.slice(index + 1)
           ]
-        })
+        }) //ends state
       })
+      .then( location.reload())
     }
 
 
   //GET ONE
     getEvent(event){
       this.setState({event: event})
+      console.log(event.tags);
     }
 
-  //Get ALL
+  //Get ALL eventS
     getEvents(){
       fetch('/events')
         .then(response => response.json())
@@ -137,6 +130,26 @@ handleCreate (person) {
         ['eventListIsVisible']: true,
         ['addEventIsVisible']: false,
         ['eventIsVisible']: false,
+        ['editEventIsVisible']: false,
+        ['eventsIsVisible']: false,
+      })
+    }
+
+    toggleAddForm(){
+      this.setState({
+        ['eventListIsVisible']: false,
+        ['addEventIsVisible']: true,
+        ['eventIsVisible']: false,
+        ['editEventIsVisible']: false,
+        ['eventsIsVisible']: false
+      })
+    }
+    toggleEvents(){
+      this.setState({
+        ['eventsIsVisible']: true,
+        ['eventListIsVisible']: false,
+        ['addEventIsVisible']: false,
+        ['eventIsVisible']: false,
         ['editEventIsVisible']: false
       })
     }
@@ -146,13 +159,15 @@ handleCreate (person) {
     //console.log('@@@@@',this.state.event);
     return (
       <div>
+      <Header toggleState={this.toggleState} toggleHome={this.toggleHome} toggleAddForm={this.toggleAddForm}
+      toggleEvents={this.toggleEvents}/>
       <div className="events-container">
         { this.state.eventListIsVisible ?
           <EventList
             toggleState={this.toggleState}
             events={this.state.events}
             getEvent={this.getEvent}
-            deleteevent={this.deleteEvent}
+            deleteEvent={this.deleteEvent}
           /> : ''}
         { this.state.addEventIsVisible ?
           <EventForm
@@ -165,9 +180,14 @@ handleCreate (person) {
             toggleState={this.toggleState}
             event={this.state.event}
             handleSubmit = {this.updateEvent}
+            deleteEvent={this.deleteEvent}
+            toggleHome ={this.toggleHome}
           /> : ''}
 
-        </div>
+          { this.state.eventsIsVisible ?
+            <Events /> : ''}
+      </div>
+      <Footer />
       </div>
     )
   }
