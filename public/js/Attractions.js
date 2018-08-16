@@ -121,7 +121,7 @@ handleCreate (attraction) {
     .then(jsonAttraction => {
       console.log('json:', jsonAttraction);
       this.getAttraction()
-      this.toggleState('attractionListIsVisible', 'attractionIsVisible')
+      this.toggleHome()
     })
     .catch(error => console.log(error))
   }
