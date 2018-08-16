@@ -24,9 +24,14 @@
   -As a user I can edit attractions(editing description, tags etc).
 
   UNSOLVED PROBLEMS -
+  -comments not posting through front end
+  -Itinerary
+  -events
+  -inconsistent attraction posting
 
   FUTURE ACHIEVEMENTS -
   -Users/Sessions
   -Google map API
   -Yelp review API
   -Itinerary
+  -About Contributors Page
