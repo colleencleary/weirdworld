@@ -1,6 +1,6 @@
-  ![[I’m an inline-style link](https://weirdworldtourism.herokuapp.com/)]()
+  ![[Weird World](https://github.com/colleencleary/weirdworld/blob/dev/public/assets/logo.png)](https://weirdworldtourism.herokuapp.com/)
 
-  
+
   PROJECT 4: Weird World - for the unconventional traveler
   VIEW WEIRD WORLD - https://weirdworldtourism.herokuapp.com/
 
