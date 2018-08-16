@@ -37,7 +37,7 @@ class AttractionForm extends React.Component {
   }
 
   handleSubmit(event){
-    event.preventDefault()
+    // event.preventDefault()
     this.props.handleSubmit(this.state)
   }
 
