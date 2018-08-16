@@ -105,6 +105,7 @@ handleCreate (attraction) {
 //Handle Update Submit
   updateAttraction(attraction){
     // console.log('Update Submit Handled');
+    console.log(attraction);
     fetch('/attractions/'+ attraction.id, {
       body: JSON.stringify(attraction),
       method: 'PUT',
@@ -114,11 +115,13 @@ handleCreate (attraction) {
       }
     })
     .then(updatedAttraction =>{
+    console.log('updated',updatedAttraction);
       return updatedAttraction.json()
     })
     .then(jsonAttraction => {
+      console.log('json:', jsonAttraction);
       this.getAttraction()
-      this.toggleState('attractionListIsVisible', 'attractionIsVisible')
+      this.toggleHome()
     })
     .catch(error => console.log(error))
   }

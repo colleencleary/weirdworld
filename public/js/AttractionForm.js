@@ -9,7 +9,8 @@ class AttractionForm extends React.Component {
       city: '',
       country: '',
       website: '',
-      tags: []
+      tags: [],
+      checkboxState: true
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,8 +26,7 @@ class AttractionForm extends React.Component {
         city: this.props.attraction.city,
         country: this.props.attraction.country,
         website: this.props.attraction.website,
-        id: this.props.attraction.id,
-        tags: this.props.attraction.tags
+        id: this.props.attraction.id
 
       })
     }
@@ -39,6 +39,12 @@ class AttractionForm extends React.Component {
   handleSubmit(event){
     // event.preventDefault()
     this.props.handleSubmit(this.state)
+  }
+
+  toggle(event) {
+    this.setState({
+      checkboxState: !this.state.checkboxState
+    });
   }
 
   onChange(e) {
@@ -58,6 +64,7 @@ class AttractionForm extends React.Component {
 
     // update the state with the new array of tags
     this.setState({ tags: tags })
+    console.log(this.state.tags);
   }
 
 
@@ -118,10 +125,10 @@ class AttractionForm extends React.Component {
                   <div className='inline-tag'>
                     <input
                       type="checkbox"
-                      value={Number(tag.id)}
-                      name='tags'
+                      value={tag.id}
+                      name={tag.term}
                       id='tags'
-                      onChange={this.onChange.bind(this)}
+                      onClick={this.toggle.bind(this)} onChange={this.onChange.bind(this)}
                     />
                     <label for='tags'>{tag.term}</label>
                   </div>

@@ -20,7 +20,17 @@ class Attraction extends React.Component {
 
           <p class="description">{this.props.attraction.description}</p>
 
-          <p class="tag-container"><span>Tags:</span> {this.props.attraction.tags.map((tag, index)=>{return(tag+' ' )})}</p>
+          <div class="tag-container">
+          <p><span>Tags:</span></p>
+          {this.props.attraction.tags.map((tag, index)=>{
+            return (
+              <p>
+                  {tag.term}  
+              </p>
+            )
+          })}
+          </div>
+
           <h4 className="edit-link" onClick={()=>{this.props.toggleState('editAttractionIsVisible', '')}}>edit tools</h4>
           </div>
 
@@ -60,13 +70,10 @@ class Attraction extends React.Component {
                tags={this.props.tags}/>
                <p className="exit-button" onClick={()=>{this.props.toggleState('editAttractionIsVisible', '')}}>X</p>
               </div>
-
-              <div className= "button-container">
               <button className="attraction-delete"
                      onClick={()=>
                         {this.props.deleteAttraction(this.props.attraction,this.props.attraction.id)}}
-               >Delete</button>
-              </div>
+               >delete this attraction</button>
             </div>
           </div> : ''}
       </div>
